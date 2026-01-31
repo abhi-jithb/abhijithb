@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { SiSubstack } from "react-icons/si";
 
 export default function HomeSection() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
       {/* Profile Image */}
-      <div className="mb-6">
+      <div className="mb-8">
         <Image
           src="/images/profile.jpg"
           alt="Abhijith"
@@ -17,46 +19,58 @@ export default function HomeSection() {
       </div>
 
       {/* Name */}
-      <h1 className="text-2xl font-medium mb-2">
+      <h1 className="text-3xl font-semibold tracking-tight mb-4">
         Abhijith
       </h1>
 
       {/* One-liner */}
-      <p className="max-w-xl text-gray-600 mb-6">
+      <p className="max-w-xl text-base text-gray-700 mb-10">
         I use technology to build things and help people grow.
       </p>
 
-      {/* Social Links */}
-      <div className="flex gap-4 mb-6">
+      {/* Social Icons */}
+      <div className="flex items-center gap-8 mb-10">
         <Link
           href="https://linkedin.com/in/yourhandle"
           target="_blank"
-          className="text-sm text-gray-700 hover:text-black"
+          aria-label="LinkedIn"
+          className="text-black hover:text-gray-600 transition-colors"
         >
-          LinkedIn
+          <FaLinkedinIn size={24} />
         </Link>
 
         <Link
           href="https://github.com/yourhandle"
           target="_blank"
-          className="text-sm text-gray-700 hover:text-black"
+          aria-label="GitHub"
+          className="text-black hover:text-gray-600 transition-colors"
         >
-          GitHub
+          <FaGithub size={24} />
         </Link>
 
         <Link
           href="https://yourname.substack.com"
           target="_blank"
-          className="text-sm text-gray-700 hover:text-black"
+          aria-label="Substack"
+          className="text-black hover:text-gray-600 transition-colors"
         >
-          Blog
+          <SiSubstack size={24} />
         </Link>
       </div>
 
-      {/* Resume */}
+      {/* Resume Button */}
       <Link
         href="/resume.pdf"
-        className="text-sm underline underline-offset-4 hover:text-gray-700"
+        className="
+          inline-flex items-center
+          rounded-full
+          border border-black
+          px-6 py-2
+          text-sm font-medium
+          text-black
+          hover:bg-black hover:text-white
+          transition-colors
+        "
       >
         Download Resume
       </Link>
