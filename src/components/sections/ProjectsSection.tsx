@@ -6,7 +6,7 @@ const projects = [
     title: "Community Learning Platform",
     description: "A platform to help students explore learning beyond academics.",
     links: [
-      { label: "Repo", url: "https://github.com/yourhandle/project" },
+      { label: "Repo", url: "https://github.com/abhi-jithb/project" },
       { label: "Live", url: "https://example.com" },
     ],
   },
@@ -15,7 +15,7 @@ const projects = [
     title: "Personal Portfolio v2",
     description: "A minimal personal site focused on projects, writing, and releases.",
     links: [
-      { label: "Repo", url: "https://github.com/yourhandle/portfolio" },
+      { label: "Repo", url: "https://github.com/abhi-jithb/portfolio" },
     ],
   },
 ];

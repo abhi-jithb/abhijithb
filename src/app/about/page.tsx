@@ -1,5 +1,9 @@
-import  AboutSection  from "@/components/sections/AboutSection";
+import AboutSection from "@/components/sections/AboutSection";
 
 export default function AboutPage() {
-  return <AboutSection />;
+  return (
+    <main className="pt-20">
+      <AboutSection />
+    </main>
+  );
 }

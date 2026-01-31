@@ -6,8 +6,7 @@ import ReleasesSection from "@/components/sections/ReleasesSection";
 
 export default function Page() {
   return (
-    <main className="flex flex-col">
-
+    <main className="flex flex-col pt-20">
       <section id="home">
         <HomeSection />
       </section>

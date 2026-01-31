@@ -1,6 +1,9 @@
 export default function AboutSection() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-24">
+        <h2 className="text-xl font-semibold mb-12">
+        About   
+      </h2>
       {/* Narrative */}
       <div className="space-y-6 text-gray-800">
         <p>

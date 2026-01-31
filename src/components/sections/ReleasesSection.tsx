@@ -5,13 +5,13 @@ const releases = [
     date: "2025-01-12",
     product: "Community Learning Platform",
     version: "v0.3",
-    repo: "https://github.com/yourhandle/project",
+    repo: "https://github.com/abhi-jithb/project",
   },
   {
     date: "2024-09-05",
     product: "Personal Portfolio",
     version: "v1.0",
-    repo: "https://github.com/yourhandle/portfolio",
+    repo: "https://github.com/abhi-jithb/portfolio",
   },
 ];
 
