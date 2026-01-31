@@ -9,10 +9,10 @@ export default function HomeSection() {
       {/* Profile Image */}
       <div className="mb-8">
         <Image
-          src="/images/profile.jpg"
+          src="/images/profile.png"
           alt="Abhijith"
-          width={120}
-          height={120}
+          width={200}
+          height={240}
           className="rounded-full"
           priority
         />
@@ -31,7 +31,7 @@ export default function HomeSection() {
       {/* Social Icons */}
       <div className="flex items-center gap-8 mb-10">
         <Link
-          href="https://linkedin.com/in/yourhandle"
+          href="https://linkedin.com/in/abhi-jthb"
           target="_blank"
           aria-label="LinkedIn"
           className="text-black hover:text-gray-600 transition-colors"
@@ -40,7 +40,7 @@ export default function HomeSection() {
         </Link>
 
         <Link
-          href="https://github.com/yourhandle"
+          href="https://github.com/abhi-jithb"
           target="_blank"
           aria-label="GitHub"
           className="text-black hover:text-gray-600 transition-colors"
@@ -49,7 +49,7 @@ export default function HomeSection() {
         </Link>
 
         <Link
-          href="https://yourname.substack.com"
+          href="https://abhijith1.substack.com"
           target="_blank"
           aria-label="Substack"
           className="text-black hover:text-gray-600 transition-colors"
