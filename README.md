@@ -1,30 +1,28 @@
 # Abhijith B Portfolio
 
-Personal portfolio built with Next.js App Router, TypeScript, and Tailwind CSS.
+Personal portfolio built with Next.js App Router, TypeScript, and Tailwind CSS, with an editorial visual direction and handwritten accent typography.
 
-## Overview
+## Project Snapshot
 
-This project is a content-driven portfolio with:
-- Home profile and social presence
-- About narrative and principles
-- Projects (including a featured project)
-- Events and engagements
-- Dedicated hackathons showcase
-- Writing and releases
-- Profile detail pages (skills, certifications, experience, education)
-
-All core content is centralized in `src/lib/data.ts`.
+This repository powers a content-first portfolio with:
+- One-page home experience with anchored sections
+- Dedicated routes for `about`, `projects`, `blog`, `releases`
+- Separate long-form sections for `events`, `hackathons`, and `profile`
+- Profile deep-dive pages for skills, certifications, experience, education
+- Centralized typed content model in `src/lib/data.ts`
+- SEO metadata, sitemap, robots, and analytics instrumentation
 
 ## Tech Stack
 
-- Next.js 16 (App Router)
-- React 19
-- TypeScript
-- Tailwind CSS v4
-- Framer Motion
-- Vercel Analytics
+- Next.js 16.1.6 (App Router)
+- React 19.2.3
+- TypeScript 5
+- Tailwind CSS 4.1.18
+- Framer Motion 12.38.0
+- React Icons 5.5.0
+- Vercel Analytics 2.0.1
 
-## Local Development
+## Scripts
 
 ```bash
 npm install
@@ -34,44 +32,87 @@ npm run build
 npm run start
 ```
 
-## Project Structure
+## Core Architecture
+
+### App Routing
+
+`src/app/page.tsx` renders the home page as a single scrolling document with section anchors:
+- `home`
+- `about`
+- `projects`
+- `events`
+- `blog`
+- `releases`
+- `contact`
+
+Standalone routes are provided for deeper browsing:
+- `/about`
+- `/projects`
+- `/blog`
+- `/releases`
+- `/events`
+- `/hackathons`
+- `/profile`
+- `/profile/skills`
+- `/profile/certifications`
+- `/profile/experience`
+- `/profile/education`
+
+### Layout and Global Styling
+
+- `src/app/layout.tsx`
+  - Global metadata and social metadata defaults
+  - Global font registration via `next/font/google`
+  - Mounted `Navbar` and Vercel `Analytics`
+- `src/app/globals.css`
+  - Tailwind import
+  - Theme tokens (`--page-bg`, `--page-text`, surfaces)
+  - Editorial rhythm utilities (`section-rhythm`, `section-kicker`, `section-title`, `paper-panel`)
+  - Handwritten link and label styles (`font-script`, `ink-link`, `ghost-link`)
+
+### Navigation Model
+
+`src/components/Navbar.tsx` uses a merged minimal nav structure:
+- `Home`
+- `About`
+- `Work` (projects + events + hackathons)
+- `Updates` (blog + releases)
+- `Contact`
+- `Profile`
+
+Behavior:
+- Scroll-aware active section highlighting on home route
+- Route-aware highlighting on nested pages (`/events`, `/hackathons`, `/blog`, `/releases`, `/profile/*`)
+- Responsive mobile menu with same grouped semantics
+
+## Source Tree
 
 ```text
 src/
   app/
-    layout.tsx
-    globals.css
-    page.tsx
     about/page.tsx
-    projects/page.tsx
     blog/page.tsx
-    releases/page.tsx
     events/
       layout.tsx
       page.tsx
+    globals.css
     hackathons/
       layout.tsx
       page.tsx
+    layout.tsx
+    page.tsx
     profile/
+      certifications/page.tsx
+      education/page.tsx
+      experience/page.tsx
       layout.tsx
       page.tsx
       skills/page.tsx
-      certifications/page.tsx
-      experience/page.tsx
-      education/page.tsx
-    sitemap.ts
+    projects/page.tsx
+    releases/page.tsx
     robots.ts
-
+    sitemap.ts
   components/
-    Navbar.tsx
-    sections/
-      HomeSection.tsx
-      AboutSection.tsx
-      ProjectsSection.tsx
-      EventsSection.tsx
-      BlogSection.tsx
-      ReleasesSection.tsx
-      ContactSection.tsx
     features/
       events/
         CategoryFilter.tsx
@@ -85,48 +126,110 @@ src/
         ProfileHeader.tsx
         TagGrid.tsx
         TimelineList.tsx
+    Navbar.tsx
+    sections/
+      AboutSection.tsx
+      BlogSection.tsx
+      ContactSection.tsx
+      EventsSection.tsx
+      HomeSection.tsx
+      ProjectsSection.tsx
+      ReleasesSection.tsx
     ui/
       BlogRow.tsx
       ProjectRow.tsx
       ReleaseRow.tsx
       SocialLink.tsx
-
   lib/
     data.ts
 ```
 
-## Data Model
+## Data and Content Strategy
 
-`src/lib/data.ts` contains typed content for:
-- Site identity, hero line, social links, stats, nav items
-- Summary, principles, and insights
-- Projects, writing posts, and releases
-- Events and hackathons
-- Profile items (skills, certifications, experience, education)
-- Profile page metadata cards
+`src/lib/data.ts` is the primary content source and contains typed exports for:
+- Site identity and profile meta (name, role, location, hero line, avatar path, resume path)
+- Social links and public stats
+- Home nav items (used by observer and routing logic)
+- About summary, principles, and insights
+- Projects (with featured project flag and external links)
+- Writing posts and release entries
+- Events and event categories
+- Hackathon records and summary cards
+- Profile records:
+  - top skills
+  - certifications
+  - experience timeline
+  - education timeline
+  - profile page metadata cards
 
-## UX and Design Notes
+This setup keeps section components mostly presentational and makes future content migration to CMS/API straightforward.
 
-- Responsive fixed navbar with desktop and mobile navigation
-- Active section highlighting on home scroll
-- Mobile-first section centering on small screens
-- Desktop layout keeps left alignment for readability
-- Handwritten accent font (`Caveat`) loaded in `src/app/layout.tsx`
-- Interactive CTA links (`.ink-link`) in `src/app/globals.css`
-  - Used for project, writing, and release actions
-  - Styled to feel tactile and clearly clickable
+## Design System Highlights
 
-## SEO and Performance
+Typography:
+- `Newsreader` as primary body/editorial font
+- `Caveat` as handwritten accent for labels and action links
 
-- Route-level metadata and Open Graph metadata
-- Canonical alternates for major routes
-- Generated sitemap via `src/app/sitemap.ts`
-- Generated robots rules via `src/app/robots.ts`
+Visual language:
+- Soft paper-like background gradients
+- Glassy surface cards via `paper-panel`
+- Editorial spacing cadence via `section-rhythm`
+- Tactile micro-CTA style for external links via `ink-link`
+
+Mobile behavior:
+- Mobile-specific home spacing and viewport-safe hero height (`100svh`)
+- Centered content on small screens with desktop left alignment in content-heavy sections
+
+## SEO, Discoverability, and Performance
+
+Implemented:
+- Global metadata defaults in `src/app/layout.tsx`
+- Per-route metadata for key pages
+- Open Graph/Twitter metadata support
+- Canonical alternates on routes
+- Dynamic sitemap generation (`src/app/sitemap.ts`)
+- Robots configuration (`src/app/robots.ts`)
+- Next image optimization configured for `avif` and `webp` (`next.config.ts`)
 - Optimized profile image at `public/assets/images/profile.webp`
-- Resume hosted at `public/resume.pdf`
-- Vercel Analytics integrated globally
+- Resume served from `public/resume.pdf`
+- Vercel Analytics mounted globally
 
-## Notes
+## Configuration Notes
 
-- `components/ui/*` currently contains optional reusable rows and social UI.
-- If needed later, content from `src/lib/data.ts` can be moved to CMS/API while keeping section components unchanged.
+- `next.config.ts`
+  - `devIndicators: false`
+  - image formats set to `avif` and `webp`
+
+## Development Workflow
+
+Typical cycle:
+1. Update content in `src/lib/data.ts` and/or UI components.
+2. Run `npm run lint`.
+3. Validate in `npm run dev` on desktop + mobile widths.
+4. Commit small focused changes.
+
+## What To Do Next
+
+### 1. Add structured data (high impact)
+- Add JSON-LD (`Person`, `WebSite`, `Article`, `Event`) in relevant pages for richer search previews.
+
+### 2. Improve accessibility baseline
+- Add skip links and landmark tuning.
+- Run contrast checks for all custom tokens and interactive states.
+- Add keyboard focus audit for the mobile menu and section links.
+
+### 3. Add automated quality checks
+- Introduce Playwright smoke tests for navigation and key routes.
+- Add a small test for sitemap/robots output integrity.
+
+### 4. Add content operations support
+- Move content from `src/lib/data.ts` to markdown/MDX or headless CMS.
+- Keep current TS types as the schema contract.
+
+### 5. Add a design token layer
+- Move repeated colors/spacings into explicit CSS custom properties (light + dark token sets).
+- Optional: add theme toggle and persist preference.
+
+### 6. Reduce maintenance overhead
+- Either integrate or remove unused `components/ui/*` pieces.
+- Consider dynamic profile routing (`/profile/[slug]`) to reduce page boilerplate.
