@@ -21,6 +21,7 @@ export default function HomeSection() {
           width={176}
           height={176}
           sizes="(max-width: 640px) 160px, 176px"
+          quality={85}
           className="h-40 w-40 rounded-full object-cover ring-2 ring-black/5 sm:h-44 sm:w-44"
           priority
         />
