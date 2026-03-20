@@ -71,6 +71,15 @@ export default function Navbar() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/profile"
+            className={`rounded-sm text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/40 ${
+              pathname.startsWith("/profile") ? "font-medium text-black" : "text-neutral-700 hover:text-black"
+            }`}
+            aria-current={pathname.startsWith("/profile") ? "page" : undefined}
+          >
+            Profile
+          </Link>
         </nav>
 
         <button
@@ -104,6 +113,17 @@ export default function Navbar() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/profile"
+            className={`rounded-md px-3 py-2 text-sm transition-colors ${
+              pathname.startsWith("/profile")
+                ? "bg-black/5 font-medium text-black"
+                : "text-neutral-700 hover:bg-black/5 hover:text-black"
+            }`}
+            onClick={() => setOpen(false)}
+          >
+            Profile
+          </Link>
         </nav>
       ) : null}
     </header>

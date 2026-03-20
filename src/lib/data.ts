@@ -28,6 +28,12 @@ export interface EducationItem {
   period: string;
 }
 
+export interface ProfilePageLink {
+  title: string;
+  description: string;
+  href: "/profile/skills" | "/profile/certifications" | "/profile/experience" | "/profile/education";
+}
+
 export interface ProjectLink {
   label: string;
   url: string;
@@ -161,6 +167,28 @@ export const siteData = {
       period: "Sep 2023 - 2027",
     },
   ] satisfies EducationItem[],
+  profilePages: [
+    {
+      title: "Skills",
+      description: "Core strengths across mentoring and software development.",
+      href: "/profile/skills",
+    },
+    {
+      title: "Certifications",
+      description: "Verified learning paths in GenAI and Google Cloud.",
+      href: "/profile/certifications",
+    },
+    {
+      title: "Experience",
+      description: "Leadership and development journey across communities and teams.",
+      href: "/profile/experience",
+    },
+    {
+      title: "Education",
+      description: "Academic foundation in Computer Science.",
+      href: "/profile/education",
+    },
+  ] satisfies ProfilePageLink[],
 };
 
 export const projects: Project[] = [
