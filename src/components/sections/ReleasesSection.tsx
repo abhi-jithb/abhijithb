@@ -1,19 +1,5 @@
 import Link from "next/link";
-
-const releases = [
-  {
-    date: "2025-01-12",
-    product: "Community Learning Platform",
-    version: "v0.3",
-    repo: "https://github.com/abhi-jithb/project",
-  },
-  {
-    date: "2024-09-05",
-    product: "Personal Portfolio",
-    version: "v1.0",
-    repo: "https://github.com/abhi-jithb/portfolio",
-  },
-];
+import { releases } from "@/lib/data";
 
 export default function ReleasesSection() {
   return (
@@ -27,7 +13,7 @@ export default function ReleasesSection() {
       <div className="space-y-7 sm:space-y-8">
         {releases.map((release) => (
           <div
-            key={`${release.product}-${release.version}`}
+            key={release.id}
             className="flex flex-col gap-1.5"
           >
             {/* Date + Product */}

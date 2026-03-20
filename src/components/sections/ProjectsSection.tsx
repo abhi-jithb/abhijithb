@@ -1,32 +1,42 @@
 import Link from "next/link";
-
-const projects = [
-  {
-    year: 2025,
-    title: "Community Learning Platform",
-    description: "A platform to help students explore learning beyond academics.",
-    links: [
-      { label: "Repo", url: "https://github.com/abhi-jithb/project" },
-      { label: "Live", url: "https://example.com" },
-    ],
-  },
-  {
-    year: 2024,
-    title: "Personal Portfolio v2",
-    description: "A minimal personal site focused on projects, writing, and releases.",
-    links: [
-      { label: "Repo", url: "https://github.com/abhi-jithb/portfolio" },
-    ],
-  },
-];
+import { projects } from "@/lib/data";
 
 export default function ProjectsSection() {
+  const featuredProject = projects.find((project) => project.featured);
+
   return (
     <div className="mx-auto w-full max-w-4xl px-5 py-16 sm:px-8 sm:py-20">
       {/* Section Title */}
       <h2 className="mb-10 text-xl font-semibold sm:mb-12">
         Projects
       </h2>
+
+      {featuredProject ? (
+        <div className="mb-9 rounded-2xl border border-black/10 bg-white/75 p-5 sm:mb-10 sm:p-6">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">
+            Featured Project
+          </p>
+          <h3 className="mb-2 text-lg font-semibold text-neutral-900 sm:text-xl">
+            {featuredProject.title}
+          </h3>
+          <p className="mb-4 max-w-2xl text-sm leading-relaxed text-neutral-700 sm:text-base">
+            {featuredProject.description}
+          </p>
+          <div className="flex flex-wrap gap-4 text-sm">
+            {featuredProject.links.map((link) => (
+              <Link
+                key={`${featuredProject.id}-${link.label}`}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-700 transition-colors hover:text-black"
+              >
+                [{link.label}]
+              </Link>
+            ))}
+          </div>
+        </div>
+      ) : null}
 
       {/* Projects List */}
       <div className="space-y-9 sm:space-y-10">

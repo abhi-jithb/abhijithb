@@ -3,14 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const navItems = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "projects", label: "Projects" },
-  { id: "blog", label: "Writing" },
-  { id: "releases", label: "Releases" },
-];
+import { siteData } from "@/lib/data";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -31,7 +24,7 @@ export default function Navbar() {
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
-          {navItems.map((item) => (
+          {siteData.navItems.map((item) => (
             <Link
               key={item.id}
               href={`/#${item.id}`}
@@ -60,7 +53,7 @@ export default function Navbar() {
           className="mx-auto flex w-full max-w-5xl flex-col gap-1 px-5 pb-4 md:hidden"
           aria-label="Mobile primary"
         >
-          {navItems.map((item) => (
+          {siteData.navItems.map((item) => (
             <Link
               key={item.id}
               href={`/#${item.id}`}

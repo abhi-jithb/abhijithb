@@ -1,21 +1,5 @@
 import Link from "next/link";
-
-const blogs = [
-  {
-    date: "2025-01-18",
-    title: "Learning in Public Is Uncomfortable — And That’s the Point",
-    summary:
-      "Why sharing unfinished thoughts matters more than polished outcomes.",
-    url: "https://yourname.substack.com/p/example-1",
-  },
-  {
-    date: "2024-11-02",
-    title: "Technology Is a Tool, Not an Identity",
-    summary:
-      "Reflections on how we often confuse what we use with who we are.",
-    url: "https://yourname.substack.com/p/example-2",
-  },
-];
+import { blogPosts } from "@/lib/data";
 
 export default function BlogSection() {
   return (
@@ -27,7 +11,7 @@ export default function BlogSection() {
 
       {/* Blog List */}
       <div className="space-y-9 sm:space-y-10">
-        {blogs.map((blog) => (
+        {blogPosts.map((blog) => (
           <div key={blog.title} className="flex flex-col gap-2.5">
             {/* Date + Title */}
             <div className="flex flex-wrap items-baseline gap-4">

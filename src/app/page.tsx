@@ -3,6 +3,7 @@ import AboutSection from "@/components/sections/AboutSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import BlogSection from "@/components/sections/BlogSection";
 import ReleasesSection from "@/components/sections/ReleasesSection";
+import ContactSection from "@/components/sections/ContactSection";
 
 export default function Page() {
   return (
@@ -25,6 +26,10 @@ export default function Page() {
 
       <section id="releases">
         <ReleasesSection />
+      </section>
+
+      <section id="contact">
+        <ContactSection />
       </section>
     </main>
   );
