@@ -14,6 +14,20 @@ export interface SiteStat {
   value: string;
 }
 
+export interface ExperienceItem {
+  organization: string;
+  role: string;
+  period: string;
+  location?: string;
+  notes?: string;
+}
+
+export interface EducationItem {
+  institution: string;
+  degree: string;
+  period: string;
+}
+
 export interface ProjectLink {
   label: string;
   url: string;
@@ -49,9 +63,10 @@ export const siteData = {
   heroLine: "I build useful software, share what I learn, and contribute in public.",
   profileImage: "/images/profile.webp",
   resumePath: "/resume.pdf",
-  email: "abhijith@example.com",
+  email: "babhijith58@gmail.com",
   location: "Kerala, India",
-  role: "Full-stack developer and open-source contributor",
+  role: "Building OSS Projects and Communities | Kerala Tech Builder | TinkerHub | Full-Stack Dev",
+  linkedInUrl: "https://www.linkedin.com/in/abhi-jithb/",
   navItems: [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
@@ -82,6 +97,70 @@ export const siteData = {
     "Current active repositories include NutriDecide and storyweaver-frontend.",
     "Writing focuses on open source onboarding and execution mindset.",
   ],
+  summary: [
+    "I believe technology is a tool, not an end goal. My core focus is empowering people through community leadership and practical knowledge sharing.",
+    "I co-founded a non-profit community and serve as a tech lead across organizations. Beyond titles, I focus on meaningful social connections and helping others discover their passions.",
+    "I share actionable insights from real project work, open source, and community building so people can apply what they learn and grow.",
+    "My approach is human-centered: people first, then technology. Success is measured by impact and inspiration, not output alone.",
+  ],
+  topSkills: [
+    "Hackathon mentor",
+    "Software Development",
+    "Software",
+  ],
+  certifications: [
+    "Introduction to Generative AI",
+    "Level 3 GenAI: Prompt Engineering",
+    "Google Cloud Computing Foundations: Infrastructure in Google Cloud",
+    "Google Cloud Computing Foundations: Cloud Computing Fundamentals",
+    "Build and Secure Networks in Google Cloud",
+  ],
+  experiences: [
+    {
+      organization: "TinkerHub",
+      role: "Council Member",
+      period: "Nov 2025 - Present",
+      location: "Kochi, Kerala, India",
+      notes: "Support campuses by identifying challenges, shaping chapter programs, and improving student tech communities.",
+    },
+    {
+      organization: "TinkerHub CEKnpy",
+      role: "Campus Lead",
+      period: "Jun 2025 - Present",
+      location: "Karunagappally, Kerala, India",
+    },
+    {
+      organization: "TinkerHub CEKnpy",
+      role: "Co Lead",
+      period: "Aug 2024 - Jun 2025",
+      location: "Karunagappally, Kerala, India",
+    },
+    {
+      organization: "To ByaaG",
+      role: "Co-Founder",
+      period: "Jun 2024 - Present",
+      location: "Kollam, Kerala, India",
+      notes: "Ignite your goals, level up your passion.",
+    },
+    {
+      organization: "Xyvin Technologies Pvt Ltd",
+      role: "Software Developer",
+      period: "Jun 2024 - Sep 2024",
+      location: "Ernakulam, Kerala, India",
+    },
+  ] satisfies ExperienceItem[],
+  education: [
+    {
+      institution: "APJ Abdul Kalam Technological University",
+      degree: "BTech, Computer Science",
+      period: "Sep 2023 - Nov 2027",
+    },
+    {
+      institution: "College of Engineering Karunagappally",
+      degree: "BTech, Computer Science",
+      period: "Sep 2023 - 2027",
+    },
+  ] satisfies EducationItem[],
 };
 
 export const projects: Project[] = [
