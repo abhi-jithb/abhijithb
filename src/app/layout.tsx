@@ -14,8 +14,24 @@
   });
 
   export const metadata: Metadata = {
-    title: "Portfolio - Abhijith B",
-    description: "Personal Portfolio - Abhijith B",
+    metadataBase: new URL("https://abhijithb.vercel.app"),
+    title: {
+      default: "Abhijith B | Portfolio",
+      template: "%s | Abhijith B",
+    },
+    description: "Minimal portfolio of Abhijith B featuring projects, writing, releases, and contact.",
+    openGraph: {
+      type: "website",
+      title: "Abhijith B | Portfolio",
+      description: "Projects, writing, and releases by Abhijith B.",
+      url: "https://abhijithb.vercel.app",
+      siteName: "Abhijith Portfolio",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Abhijith B | Portfolio",
+      description: "Projects, writing, and releases by Abhijith B.",
+    },
   };
 
   export default function RootLayout({
