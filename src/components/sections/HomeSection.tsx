@@ -37,6 +37,21 @@ export default function HomeSection() {
         {siteData.heroLine}
       </p>
 
+      <p className="mb-6 text-xs uppercase tracking-[0.12em] text-neutral-500 sm:text-sm">
+        {siteData.role} - {siteData.location}
+      </p>
+
+      <div className="mb-8 flex flex-wrap items-center justify-center gap-2.5 sm:mb-10 sm:gap-3">
+        {siteData.stats.map((stat) => (
+          <span
+            key={stat.label}
+            className="rounded-full border border-black/10 bg-white/80 px-3 py-1 text-xs text-neutral-700"
+          >
+            {stat.label}: {stat.value}
+          </span>
+        ))}
+      </div>
+
       {/* Social Icons */}
       <div className="mb-8 flex items-center gap-7 sm:mb-10 sm:gap-8">
         {siteData.socialLinks.map((socialLink) => {

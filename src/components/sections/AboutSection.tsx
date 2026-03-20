@@ -1,3 +1,5 @@
+import { siteData } from "@/lib/data";
+
 export default function AboutSection() {
   return (
     <div className="mx-auto w-full max-w-3xl px-5 py-16 sm:px-8 sm:py-20">
@@ -34,10 +36,20 @@ export default function AboutSection() {
         </h2>
 
         <ul className="list-inside list-disc space-y-2 text-sm text-neutral-700 sm:text-base">
-          <li>Technology is a tool, not who we are</li>
-          <li>Helping people grow matters more than being right</li>
-          <li>Mental models matter more than arguments</li>
-          <li>Learning never really ends</li>
+          {siteData.principles.map((principle) => (
+            <li key={principle}>{principle}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="mt-10 rounded-2xl border border-black/10 bg-white/70 p-5 sm:mt-12 sm:p-6">
+        <h3 className="mb-3 text-xs font-medium uppercase tracking-[0.12em] text-neutral-500 sm:text-sm">
+          Public Insights
+        </h3>
+        <ul className="list-inside list-disc space-y-2 text-sm text-neutral-700 sm:text-base">
+          {siteData.insights.map((insight) => (
+            <li key={insight}>{insight}</li>
+          ))}
         </ul>
       </div>
     </div>
