@@ -19,27 +19,35 @@ const categoryLabelMap: Record<EventCategory, string> = {
 };
 
 export default function CategoryTabs({ events }: CategoryTabsProps) {
-  const [activeCategory, setActiveCategory] = useState<EventCategory>("organized");
+  const availableCategories = useMemo(
+    () => categoryOrder.filter((category) => events.some((event) => event.category === category)),
+    [events]
+  );
+  const [activeCategory, setActiveCategory] = useState<EventCategory>(availableCategories[0] ?? "organized");
+
+  const effectiveCategory = availableCategories.includes(activeCategory)
+    ? activeCategory
+    : availableCategories[0] ?? "organized";
 
   const filteredEvents = useMemo(
-    () => events.filter((event) => event.category === activeCategory),
-    [activeCategory, events]
+    () => events.filter((event) => event.category === effectiveCategory),
+    [effectiveCategory, events]
   );
 
   return (
     <div>
       <div className="mb-6 flex flex-wrap gap-2.5 sm:mb-8">
-        {categoryOrder.map((category) => (
+        {availableCategories.map((category) => (
           <CategoryFilter
             key={category}
             label={categoryLabelMap[category]}
-            active={activeCategory === category}
+            active={effectiveCategory === category}
             onClick={() => setActiveCategory(category)}
           />
         ))}
       </div>
 
-      <EventTimeline key={activeCategory} events={filteredEvents} />
+      <EventTimeline key={effectiveCategory} events={filteredEvents} />
     </div>
   );
 }

@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/projects",
     "/events",
+    "/hackathons",
     "/blog",
     "/releases",
     "/profile",

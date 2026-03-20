@@ -4,20 +4,20 @@ import { events } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Events & Engagements",
-  description: "Organized programs, hackathons, mentorship sessions, and community experiences of Abhijith B.",
+  description: "Organized programs, mentorship sessions, and community experiences of Abhijith B.",
   alternates: {
     canonical: "/events",
   },
   openGraph: {
     title: "Events & Engagements | Abhijith B",
-    description: "Track events, hackathons, and mentorship engagements.",
+    description: "Track organizing, mentorship, and community engagements.",
     url: "/events",
   },
 };
 
 const stats = {
   organized: events.filter((event) => event.category === "organized").length,
-  hackathon: events.filter((event) => event.category === "hackathon").length,
+  experience: events.filter((event) => event.category === "experience").length,
   mentorship: events.filter((event) => event.category === "mentorship").length,
 };
 
@@ -38,8 +38,8 @@ export default function EventsPage() {
           <p className="text-2xl font-semibold text-neutral-900">{stats.organized}</p>
         </div>
         <div className="rounded-2xl border border-black/10 bg-white/80 p-4">
-          <p className="text-xs uppercase tracking-[0.12em] text-neutral-500">Hackathons</p>
-          <p className="text-2xl font-semibold text-neutral-900">{stats.hackathon}</p>
+          <p className="text-xs uppercase tracking-[0.12em] text-neutral-500">Experiences</p>
+          <p className="text-2xl font-semibold text-neutral-900">{stats.experience}</p>
         </div>
         <div className="rounded-2xl border border-black/10 bg-white/80 p-4">
           <p className="text-xs uppercase tracking-[0.12em] text-neutral-500">Mentored Sessions</p>

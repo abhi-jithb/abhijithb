@@ -83,6 +83,21 @@ export interface Event {
   outcome?: string;
 }
 
+export interface Hackathon {
+  title: string;
+  date: string;
+  role: string;
+  project?: string;
+  location?: string;
+  outcome?: string;
+  organized?: boolean;
+}
+
+export interface HackathonProject {
+  name: string;
+  description: string;
+}
+
 export const siteData = {
   name: "Abhijith B",
   heroLine: "I build useful software, share what I learn, and contribute in public.",
@@ -237,6 +252,27 @@ export const projects: Project[] = [
     links: [{ label: "Repo", url: "https://github.com/abhi-jithb/NutriDecide" }],
   },
   {
+    id: "otium",
+    year: 2026,
+    title: "Otium",
+    description: "Flutter cognitive focus app built during MAGNATHON 2026, with sprint timer and focus recovery workflows.",
+    links: [{ label: "Repo", url: "https://github.com/abhi-jithb/Otium" }],
+  },
+  {
+    id: "earthbin",
+    year: 2025,
+    title: "EarthBin",
+    description: "Biomedical waste tracker from reCet/NASA Space Apps path using React, Firebase, and hardware integration.",
+    links: [],
+  },
+  {
+    id: "voyage",
+    year: 2025,
+    title: "Voyage",
+    description: "Tink Her Hack mentoring track project that reached 2nd place with guided product support.",
+    links: [],
+  },
+  {
     id: "college-vyapari",
     year: 2025,
     title: "College Vyapari",
@@ -305,15 +341,6 @@ export const events: Event[] = [
     links: [],
   },
   {
-    title: "MAGNATHON 2026",
-    date: "Feb 9-10, 2026",
-    category: "hackathon",
-    role: "Team Thudarum (Otium app)",
-    location: "College of Engineering Vadakara",
-    description: "Built a Flutter cognitive focus app under deadline pressure and collaborated on rapid feature decisions.",
-    outcome: "Top 12 teams, continuing development",
-  },
-  {
     title: "Winter Camp 2025",
     date: "Dec 12-14, 2025",
     category: "experience",
@@ -345,15 +372,6 @@ export const events: Event[] = [
     role: "Lead Mentor",
     location: "TinkerHub CEAL",
     description: "Ran a hands-on build session that inspired beginner projects including the PinTab extension direction.",
-  },
-  {
-    title: "reCet Hackathon",
-    date: "2025",
-    category: "hackathon",
-    role: "EarthBin Team",
-    location: "CET Trivandrum",
-    description: "Built biomedical waste tracking using React, Firebase, and Arduino-style integrations.",
-    outcome: "NASA Space Apps global nominee pathway",
   },
   {
     title: "Campus Chapter Mentor Sprint",
@@ -429,7 +447,106 @@ export const events: Event[] = [
   },
 ];
 
+export const hackathons: Hackathon[] = [
+  {
+    title: "MAGNATHON 2026",
+    date: "Feb 9-10, 2026",
+    role: "Participant (Team Thudarum)",
+    project: "Otium",
+    location: "College of Engineering Vadakara",
+    outcome: "Top 12/200 teams, continuing development",
+  },
+  {
+    title: "reCet Hackathon",
+    date: "2025",
+    role: "Participant",
+    project: "EarthBin",
+    location: "CET Trivandrum",
+    outcome: "NASA Space Apps global nominee",
+  },
+  {
+    title: "Zilckathon-HFT",
+    date: "-",
+    role: "Participant",
+    location: "Kerala Startup Mission",
+  },
+  {
+    title: "FOSSASIA 2024",
+    date: "2024",
+    role: "Participant",
+  },
+  {
+    title: "Hack For Tomorrow",
+    date: "-",
+    role: "Participant",
+    location: "MEC",
+  },
+  {
+    title: "IEEE SB GCEK Hackathon",
+    date: "-",
+    role: "Participant",
+    location: "GCEK",
+  },
+  {
+    title: "NASA Space Apps",
+    date: "-",
+    role: "Participant",
+    project: "EarthBin",
+    location: "Global",
+    outcome: "Global nominee",
+  },
+  {
+    title: "Useless Projects",
+    date: "Oct 2024",
+    role: "Organizer",
+    project: "Various small prototypes",
+    location: "TinkerHub CEKnpy",
+    outcome: "Fun and experimental success",
+    organized: true,
+  },
+  {
+    title: "Tink Her Hack 4.0",
+    date: "March 2026",
+    role: "Venue Ops + Mentor",
+    location: "Kerala Startup Mission",
+    outcome: "College venue recognized",
+    organized: true,
+  },
+  {
+    title: "Tink Her Hack 3.0",
+    date: "2025",
+    role: "Mentor",
+    project: "Voyage",
+    location: "College of Engineering Pathanapuram",
+    outcome: "Multiple team support",
+  },
+];
+
+export const hackathonSummary = {
+  total: 10,
+  organized: 2,
+  participated: 7,
+  notable: ["MAGNATHON Top 12", "NASA Space Apps nominee"],
+  homeCampus: "TinkerHub CEKnpy",
+};
+
+export const hackathonProjects: HackathonProject[] = [
+  {
+    name: "Otium",
+    description: "MAGNATHON 2026 - Flutter focus app (sprints + breathing resets)",
+  },
+  {
+    name: "EarthBin",
+    description: "reCet + NASA Space Apps nominee - Biomedical waste tracker",
+  },
+  {
+    name: "Voyage",
+    description: "TinkHerHack 3.0 (mentored team, 2nd place)",
+  },
+];
+
 export const getProjects = async (): Promise<Project[]> => projects;
 export const getBlogPosts = async (): Promise<BlogPost[]> => blogPosts;
 export const getReleases = async (): Promise<Release[]> => releases;
 export const getEvents = async (): Promise<Event[]> => events;
+export const getHackathons = async (): Promise<Hackathon[]> => hackathons;

@@ -8,9 +8,14 @@ export default function EventsSection() {
     <div className="mx-auto w-full max-w-4xl px-5 py-16 sm:px-8 sm:py-20">
       <div className="mb-10 flex items-center justify-between sm:mb-12">
         <h2 className="text-xl font-semibold">Events & Engagements</h2>
-        <Link href="/events" className="text-sm text-neutral-600 transition-colors hover:text-black">
-          View all -&gt;
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link href="/events" className="text-sm text-neutral-600 transition-colors hover:text-black">
+            View all -&gt;
+          </Link>
+          <Link href="/hackathons" className="text-sm text-neutral-600 transition-colors hover:text-black">
+            Hackathons -&gt;
+          </Link>
+        </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-3">

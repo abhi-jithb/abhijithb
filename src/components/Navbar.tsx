@@ -50,6 +50,7 @@ export default function Navbar() {
   };
 
   const isEventsRoute = pathname.startsWith("/events");
+  const isHackathonsRoute = pathname.startsWith("/hackathons");
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-black/10 bg-white/85 backdrop-blur-md">
@@ -79,6 +80,15 @@ export default function Navbar() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/hackathons"
+            className={`rounded-sm text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/40 ${
+              isHackathonsRoute ? "font-medium text-black" : "text-neutral-700 hover:text-black"
+            }`}
+            aria-current={isHackathonsRoute ? "page" : undefined}
+          >
+            Hackathons
+          </Link>
           <Link
             href="/profile"
             className={`rounded-sm text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/40 ${
@@ -125,6 +135,17 @@ export default function Navbar() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/hackathons"
+            className={`rounded-md px-3 py-2 text-sm transition-colors ${
+              isHackathonsRoute
+                ? "bg-black/5 font-medium text-black"
+                : "text-neutral-700 hover:bg-black/5 hover:text-black"
+            }`}
+            onClick={() => setOpen(false)}
+          >
+            Hackathons
+          </Link>
           <Link
             href="/profile"
             className={`rounded-md px-3 py-2 text-sm transition-colors ${
