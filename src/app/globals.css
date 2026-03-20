@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
 :root {
-	--page-bg: #f7f7f5;
-	--page-text: #171717;
+	--page-bg: #f4f3ef;
+	--page-text: #161514;
+}
+
+.dark {
+	--page-bg: #0d1117;
+	--page-text: #e6e8eb;
 }
 
 html {
@@ -11,13 +16,19 @@ html {
 
 body {
 	min-height: 100vh;
+	font-family: var(--font-newsreader), serif;
 	color: var(--page-text);
-	background:
-		radial-gradient(circle at 10% 5%, #ffffff 0%, #f7f7f5 35%, #f1f1ee 100%);
+	transition: background 250ms ease, color 250ms ease;
+	background: var(--page-bg);
 }
 
-.font-hand {
-	font-family: var(--font-caveat), "Comic Sans MS", cursive;
+.dark body {
+	background: #0d1117;
+}
+
+.font-script {
+	font-family: var(--font-caveat), cursive;
+	letter-spacing: 0.01em;
 }
 
 .ink-link {

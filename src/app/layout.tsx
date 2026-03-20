@@ -1,5 +1,5 @@
   import type { Metadata } from "next";
-  import { Caveat, Geist, Geist_Mono } from "next/font/google";
+  import { Caveat, Geist, Geist_Mono, Newsreader } from "next/font/google";
   import { Analytics } from "@vercel/analytics/react";
   import Navbar from "@/components/Navbar";
   import "./globals.css";
@@ -18,6 +18,12 @@
     variable: "--font-caveat",
     subsets: ["latin"],
     weight: ["500", "600", "700"],
+  });
+
+  const newsreader = Newsreader({
+    variable: "--font-newsreader",
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
   });
 
   export const metadata: Metadata = {
@@ -49,7 +55,7 @@
     return (
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} antialiased text-neutral-900`}
+          className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} ${newsreader.variable} antialiased text-neutral-900`}
         >
           <Navbar />
           <div className="pt-16">{children}</div>
