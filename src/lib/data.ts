@@ -101,7 +101,7 @@ export interface HackathonProject {
 export const siteData = {
   name: "Abhijith B",
   heroLine: "I build useful software, share what I learn, and contribute in public.",
-  profileImage: "/images/profile.webp",
+  profileImage: "/assets/images/profile.webp",
   resumePath: "/resume.pdf",
   email: "babhijith58@gmail.com",
   location: "Kerala, India",
