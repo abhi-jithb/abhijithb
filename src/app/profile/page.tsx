@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import ProfileHeader from "@/components/profile/ProfileHeader";
+import ProfileHeader from "@/components/features/profile/ProfileHeader";
 import { siteData } from "@/lib/data";
 
 export const metadata: Metadata = {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import ProfileHeader from "@/components/profile/ProfileHeader";
-import TagGrid from "@/components/profile/TagGrid";
+import ProfileHeader from "@/components/features/profile/ProfileHeader";
+import TagGrid from "@/components/features/profile/TagGrid";
 import { siteData } from "@/lib/data";
 
 export const metadata: Metadata = {

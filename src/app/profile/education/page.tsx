@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import ProfileHeader from "@/components/profile/ProfileHeader";
-import TimelineList from "@/components/profile/TimelineList";
+import ProfileHeader from "@/components/features/profile/ProfileHeader";
+import TimelineList from "@/components/features/profile/TimelineList";
 import { siteData } from "@/lib/data";
 
 export const metadata: Metadata = {
