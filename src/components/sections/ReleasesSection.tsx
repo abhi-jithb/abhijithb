@@ -36,9 +36,9 @@ export default function ReleasesSection() {
               href={release.repo}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-fit text-sm text-neutral-600 transition-colors hover:text-black"
+              className="ink-link w-fit"
             >
-              [Repo]
+              Open repo
             </Link>
           </div>
         ))}

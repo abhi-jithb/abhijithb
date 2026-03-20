@@ -34,9 +34,9 @@ export default function BlogSection() {
               href={blog.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-fit text-sm text-neutral-600 transition-colors hover:text-black"
+              className="ink-link w-fit"
             >
-              [Read]
+              Read article
             </Link>
           </div>
         ))}

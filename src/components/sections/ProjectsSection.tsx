@@ -29,9 +29,9 @@ export default function ProjectsSection() {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-700 transition-colors hover:text-black"
+                className="ink-link"
               >
-                [{link.label}]
+                Open {link.label.toLowerCase()}
               </Link>
             ))}
           </div>
@@ -66,9 +66,9 @@ export default function ProjectsSection() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-neutral-600 transition-colors hover:text-black"
+                  className="ink-link"
                 >
-                  [{link.label}]
+                  Open {link.label.toLowerCase()}
                 </Link>
               ))}
             </div>

@@ -1,5 +1,5 @@
   import type { Metadata } from "next";
-  import { Geist, Geist_Mono } from "next/font/google";
+  import { Caveat, Geist, Geist_Mono } from "next/font/google";
   import { Analytics } from "@vercel/analytics/react";
   import Navbar from "@/components/Navbar";
   import "./globals.css";
@@ -12,6 +12,12 @@
   const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
     subsets: ["latin"],
+  });
+
+  const caveat = Caveat({
+    variable: "--font-caveat",
+    subsets: ["latin"],
+    weight: ["500", "600", "700"],
   });
 
   export const metadata: Metadata = {
@@ -43,7 +49,7 @@
     return (
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased text-neutral-900`}
+          className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} antialiased text-neutral-900`}
         >
           <Navbar />
           <div className="pt-16">{children}</div>

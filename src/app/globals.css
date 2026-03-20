@@ -15,3 +15,59 @@ body {
 	background:
 		radial-gradient(circle at 10% 5%, #ffffff 0%, #f7f7f5 35%, #f1f1ee 100%);
 }
+
+.font-hand {
+	font-family: var(--font-caveat), "Comic Sans MS", cursive;
+}
+
+.ink-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	border: 1px solid rgba(23, 23, 23, 0.26);
+	border-radius: 999px;
+	padding: 0.22rem 0.82rem 0.28rem;
+	font-family: var(--font-caveat), "Comic Sans MS", cursive;
+	font-size: 1.14rem;
+	line-height: 1;
+	letter-spacing: 0.01em;
+	color: #202020;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(243, 243, 238, 0.95) 100%);
+	box-shadow:
+		0 1px 0 rgba(255, 255, 255, 0.85) inset,
+		0 1px 2px rgba(0, 0, 0, 0.08);
+	transform: translateY(0);
+	transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.ink-link::after {
+	content: "->";
+	font-size: 1rem;
+	transform: translateX(0);
+	transition: transform 180ms ease;
+}
+
+.ink-link:hover {
+	border-color: rgba(23, 23, 23, 0.52);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(237, 237, 231, 1) 100%);
+	transform: translateY(-1px);
+	box-shadow:
+		0 1px 0 rgba(255, 255, 255, 0.95) inset,
+		0 5px 14px rgba(0, 0, 0, 0.12);
+}
+
+.ink-link:hover::after {
+	transform: translateX(2px);
+}
+
+.ink-link:active {
+	transform: translateY(0);
+	box-shadow:
+		0 1px 0 rgba(255, 255, 255, 0.8) inset,
+		0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.ink-link:focus-visible {
+	outline: 2px solid rgba(18, 18, 18, 0.4);
+	outline-offset: 2px;
+}
