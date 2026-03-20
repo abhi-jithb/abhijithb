@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteData } from "@/lib/data";
@@ -8,9 +8,46 @@ import { siteData } from "@/lib/data";
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const effectiveSection = pathname === "/" ? activeSection : pathname.replace("/", "") || "home";
 
-  const linkClass =
-    "text-sm text-neutral-700 transition-colors hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/40 rounded-sm";
+  useEffect(() => {
+    if (pathname !== "/") {
+      return;
+    }
+
+    const sections = siteData.navItems
+      .map((item) => document.getElementById(item.id))
+      .filter((section): section is HTMLElement => section !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visibleEntries.length > 0) {
+          setActiveSection(visibleEntries[0].target.id);
+        }
+      },
+      {
+        rootMargin: "-30% 0px -55% 0px",
+        threshold: [0.2, 0.5, 0.8],
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  const getLinkClass = (id: string) => {
+    const baseClass =
+      "rounded-sm text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/40";
+    const isActive = effectiveSection === id;
+
+    return `${baseClass} ${isActive ? "font-medium text-black" : "text-neutral-700 hover:text-black"}`;
+  };
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-black/10 bg-white/85 backdrop-blur-md">
@@ -28,8 +65,8 @@ export default function Navbar() {
             <Link
               key={item.id}
               href={`/#${item.id}`}
-              className={linkClass}
-              aria-current={pathname === "/" && item.id === "home" ? "page" : undefined}
+              className={getLinkClass(item.id)}
+              aria-current={effectiveSection === item.id ? "page" : undefined}
             >
               {item.label}
             </Link>
@@ -57,7 +94,11 @@ export default function Navbar() {
             <Link
               key={item.id}
               href={`/#${item.id}`}
-              className="rounded-md px-3 py-2 text-sm text-neutral-700 transition-colors hover:bg-black/5 hover:text-black"
+              className={`rounded-md px-3 py-2 text-sm transition-colors ${
+                effectiveSection === item.id
+                  ? "bg-black/5 font-medium text-black"
+                  : "text-neutral-700 hover:bg-black/5 hover:text-black"
+              }`}
               onClick={() => setOpen(false)}
             >
               {item.label}
