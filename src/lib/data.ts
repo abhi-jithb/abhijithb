@@ -42,7 +42,7 @@ export interface Release {
 export const siteData = {
   name: "Abhijith B",
   heroLine: "I use technology to build things and help people grow.",
-  profileImage: "/images/profile.png",
+  profileImage: "/images/profile.webp",
   resumePath: "/resume.pdf",
   email: "abhijith@example.com",
   navItems: [
