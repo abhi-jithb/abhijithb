@@ -20,18 +20,18 @@
       default: "Abhijith B | Portfolio",
       template: "%s | Abhijith B",
     },
-    description: "Minimal portfolio of Abhijith B featuring projects, writing, releases, and contact.",
+    description: "Minimal portfolio of Abhijith B featuring projects, events, writing, releases, and profile insights.",
     openGraph: {
       type: "website",
       title: "Abhijith B | Portfolio",
-      description: "Projects, writing, and releases by Abhijith B.",
+      description: "Projects, events, writing, and releases by Abhijith B.",
       url: "https://abhijithb.vercel.app",
       siteName: "Abhijith Portfolio",
     },
     twitter: {
       card: "summary_large_image",
       title: "Abhijith B | Portfolio",
-      description: "Projects, writing, and releases by Abhijith B.",
+      description: "Projects, events, writing, and releases by Abhijith B.",
     },
   };
 

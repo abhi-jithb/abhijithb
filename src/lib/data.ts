@@ -64,6 +64,25 @@ export interface Release {
   repo: string;
 }
 
+export type EventCategory = "organized" | "hackathon" | "experience" | "mentorship";
+
+export interface EventLink {
+  label: string;
+  url: string;
+}
+
+export interface Event {
+  title: string;
+  date: string;
+  category: EventCategory;
+  role: string;
+  location?: string;
+  description: string;
+  highlights?: string[];
+  links?: EventLink[];
+  outcome?: string;
+}
+
 export const siteData = {
   name: "Abhijith B",
   heroLine: "I build useful software, share what I learn, and contribute in public.",
@@ -77,6 +96,7 @@ export const siteData = {
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "projects", label: "Projects" },
+    { id: "events", label: "Events" },
     { id: "blog", label: "Writing" },
     { id: "releases", label: "Releases" },
     { id: "contact", label: "Contact" },
@@ -273,6 +293,143 @@ export const releases: Release[] = [
   },
 ];
 
+export const events: Event[] = [
+  {
+    title: "Tink Her Hack 4.0 After-Summit / WMC 2026",
+    date: "March 14, 2026",
+    category: "organized",
+    role: "Venue Operations Lead",
+    location: "Kerala Startup Mission, Kochi",
+    description: "Coordinated a large-scale women-in-tech after event with late-night planning, mentor flow, and on-ground risk management.",
+    highlights: ["College of Engineering Karunagappally recognized", "2000+ attendees"],
+    links: [],
+  },
+  {
+    title: "MAGNATHON 2026",
+    date: "Feb 9-10, 2026",
+    category: "hackathon",
+    role: "Team Thudarum (Otium app)",
+    location: "College of Engineering Vadakara",
+    description: "Built a Flutter cognitive focus app under deadline pressure and collaborated on rapid feature decisions.",
+    outcome: "Top 12 teams, continuing development",
+  },
+  {
+    title: "Winter Camp 2025",
+    date: "Dec 12-14, 2025",
+    category: "experience",
+    role: "Panel Discussion Guest",
+    location: "Kerala",
+    description: "Joined TinkerHub core team discussions on chapter quality, community strategy, and long-term direction.",
+  },
+  {
+    title: "TinkerHub Campus Program Strategy Circle",
+    date: "Nov 2025",
+    category: "organized",
+    role: "Council Member",
+    location: "Kochi, Kerala",
+    description: "Worked with council teams to map campus struggles and create program interventions for stronger chapters.",
+  },
+  {
+    title: "TinkerSpace 3rd Anniversary Carnival",
+    date: "2025",
+    category: "experience",
+    role: "Attendee and Community Contributor",
+    location: "TinkerSpace, Kochi",
+    description: "Participated in zine making, music workshops, and panel sessions with a strong people-first builder culture.",
+    highlights: ["Creative workshops", "Community networking"],
+  },
+  {
+    title: "Chrome Extensions Workshop",
+    date: "2025",
+    category: "mentorship",
+    role: "Lead Mentor",
+    location: "TinkerHub CEAL",
+    description: "Ran a hands-on build session that inspired beginner projects including the PinTab extension direction.",
+  },
+  {
+    title: "reCet Hackathon",
+    date: "2025",
+    category: "hackathon",
+    role: "EarthBin Team",
+    location: "CET Trivandrum",
+    description: "Built biomedical waste tracking using React, Firebase, and Arduino-style integrations.",
+    outcome: "NASA Space Apps global nominee pathway",
+  },
+  {
+    title: "Campus Chapter Mentor Sprint",
+    date: "2025",
+    category: "mentorship",
+    role: "Student Mentor",
+    location: "Chengannur",
+    description: "Mentored chapter students on project clarity, collaboration habits, and presentation readiness.",
+  },
+  {
+    title: "Open Source Onboarding Session",
+    date: "2025",
+    category: "mentorship",
+    role: "Community Mentor",
+    location: "TinkerHub CEKnpy",
+    description: "Guided beginners through Git, GitHub workflow, and first contribution pathways.",
+  },
+  {
+    title: "Hackathon Mentorship at CEK",
+    date: "2024",
+    category: "mentorship",
+    role: "Hackathon Mentor",
+    location: "College of Engineering Karunagappally",
+    description: "Supported student teams with ideation, MVP scoping, and final demo storytelling.",
+  },
+  {
+    title: "Useless Projects Hackathon",
+    date: "Oct 2024",
+    category: "organized",
+    role: "Organizer",
+    location: "TinkerHub CEKnpy",
+    description: "Designed a playful hackathon that taught rapid prototyping through unconventional project ideas.",
+  },
+  {
+    title: "Community Build Nights",
+    date: "2024",
+    category: "organized",
+    role: "Program Curator",
+    location: "CEKnpy",
+    description: "Hosted recurring evening build sessions to improve consistency, code review quality, and peer feedback loops.",
+  },
+  {
+    title: "DevTown Campus Programs",
+    date: "Dec 2023 - Jun 2024",
+    category: "experience",
+    role: "Campus Ambassador",
+    location: "Kerala",
+    description: "Facilitated student participation in tech programs and connected campus learners to practical project tracks.",
+  },
+  {
+    title: "Web Development Internship Journey",
+    date: "Jan - Feb 2024",
+    category: "experience",
+    role: "Web Development Intern",
+    location: "Codeway Solutions",
+    description: "Applied foundational frontend and workflow skills in a structured internship setting.",
+  },
+  {
+    title: "Campus Placement Coordination Drives",
+    date: "Feb 2024 - Jun 2025",
+    category: "organized",
+    role: "Placement Coordinator",
+    location: "College of Engineering Karunagappally",
+    description: "Coordinated campus placement communication, student readiness efforts, and execution logistics.",
+  },
+  {
+    title: "Open Source Reflection Session",
+    date: "2026",
+    category: "experience",
+    role: "Speaker",
+    location: "Community Circle",
+    description: "Shared practical lessons from contribution consistency, pull-request culture, and builder mindset.",
+  },
+];
+
 export const getProjects = async (): Promise<Project[]> => projects;
 export const getBlogPosts = async (): Promise<BlogPost[]> => blogPosts;
 export const getReleases = async (): Promise<Release[]> => releases;
+export const getEvents = async (): Promise<Event[]> => events;

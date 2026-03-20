@@ -49,6 +49,8 @@ export default function Navbar() {
     return `${baseClass} ${isActive ? "font-medium text-black" : "text-neutral-700 hover:text-black"}`;
   };
 
+  const isEventsRoute = pathname.startsWith("/events");
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-black/10 bg-white/85 backdrop-blur-md">
       <div className="mx-auto flex h-16 w-full max-w-5xl items-center justify-between px-5 sm:px-8">
@@ -64,9 +66,15 @@ export default function Navbar() {
           {siteData.navItems.map((item) => (
             <Link
               key={item.id}
-              href={`/#${item.id}`}
-              className={getLinkClass(item.id)}
-              aria-current={effectiveSection === item.id ? "page" : undefined}
+              href={item.id === "events" ? "/events" : `/#${item.id}`}
+              className={
+                item.id === "events"
+                  ? `rounded-sm text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/40 ${
+                      isEventsRoute ? "font-medium text-black" : "text-neutral-700 hover:text-black"
+                    }`
+                  : getLinkClass(item.id)
+              }
+              aria-current={item.id === "events" ? (isEventsRoute ? "page" : undefined) : (effectiveSection === item.id ? "page" : undefined)}
             >
               {item.label}
             </Link>
@@ -102,9 +110,13 @@ export default function Navbar() {
           {siteData.navItems.map((item) => (
             <Link
               key={item.id}
-              href={`/#${item.id}`}
+              href={item.id === "events" ? "/events" : `/#${item.id}`}
               className={`rounded-md px-3 py-2 text-sm transition-colors ${
-                effectiveSection === item.id
+                item.id === "events"
+                  ? isEventsRoute
+                    ? "bg-black/5 font-medium text-black"
+                    : "text-neutral-700 hover:bg-black/5 hover:text-black"
+                  : effectiveSection === item.id
                   ? "bg-black/5 font-medium text-black"
                   : "text-neutral-700 hover:bg-black/5 hover:text-black"
               }`}
