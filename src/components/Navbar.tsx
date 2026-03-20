@@ -85,7 +85,7 @@ export default function Navbar() {
           className="font-script text-2xl leading-none text-black"
           onClick={() => setOpen(false)}
         >
-          Abhijith
+          Abhijith B
         </Link>
 
         <nav className="hidden items-center gap-2 md:flex" aria-label="Primary">
