@@ -45,6 +45,14 @@ body {
 	padding: 1.1rem 0;
 }
 
+.section-rhythm-home {
+	padding-top: 0;
+}
+
+.section-rhythm-home::before {
+	display: none;
+}
+
 .section-rhythm:nth-child(odd)::before {
 	content: "";
 	position: absolute;
@@ -149,5 +157,9 @@ body {
 @media (min-width: 640px) {
 	.section-rhythm {
 		padding: 1.8rem 0;
+	}
+
+	.section-rhythm-home {
+		padding-top: 1.8rem;
 	}
 }

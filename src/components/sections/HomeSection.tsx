@@ -12,7 +12,7 @@ const socialIcons = {
 
 export default function HomeSection() {
   return (
-    <div className="mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-4xl flex-col items-center justify-center px-5 py-16 text-center sm:px-8 sm:py-24">
+    <div className="mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-4xl flex-col items-center justify-center px-5 py-8 text-center sm:min-h-[calc(100vh-4rem)] sm:px-8 sm:py-24">
       <p className="section-kicker mb-4">Building in public</p>
 
       {/* Profile Image */}

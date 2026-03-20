@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <main className="editorial-main flex flex-col">
-      <section id="home" className="section-rhythm">
+      <section id="home" className="section-rhythm section-rhythm-home">
         <HomeSection />
       </section>
 
