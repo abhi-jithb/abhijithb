@@ -3,11 +3,17 @@
 :root {
 	--page-bg: #f4f3ef;
 	--page-text: #161514;
+	--surface: rgba(255, 255, 255, 0.68);
+	--surface-strong: rgba(255, 255, 255, 0.86);
+	--line: rgba(22, 21, 20, 0.14);
 }
 
 .dark {
 	--page-bg: #0d1117;
 	--page-text: #e6e8eb;
+	--surface: rgba(13, 17, 23, 0.72);
+	--surface-strong: rgba(13, 17, 23, 0.9);
+	--line: rgba(230, 232, 235, 0.18);
 }
 
 html {
@@ -19,11 +25,68 @@ body {
 	font-family: var(--font-newsreader), serif;
 	color: var(--page-text);
 	transition: background 250ms ease, color 250ms ease;
-	background: var(--page-bg);
+	background-color: var(--page-bg);
+	background-image:
+		radial-gradient(circle at 9% 8%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 32%),
+		radial-gradient(circle at 92% 12%, rgba(235, 232, 222, 0.65) 0%, rgba(235, 232, 222, 0) 24%),
+		linear-gradient(180deg, rgba(255, 255, 255, 0.36) 0%, rgba(244, 243, 239, 0.75) 38%, rgba(240, 237, 230, 0.96) 100%);
 }
 
 .dark body {
 	background: #0d1117;
+}
+
+.editorial-main {
+	padding-bottom: 4rem;
+}
+
+.section-rhythm {
+	position: relative;
+	padding: 1.1rem 0;
+}
+
+.section-rhythm:nth-child(odd)::before {
+	content: "";
+	position: absolute;
+	inset: 0.5rem 0;
+	pointer-events: none;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+	z-index: -1;
+}
+
+.section-kicker {
+	font-family: var(--font-caveat), cursive;
+	font-size: 1.3rem;
+	line-height: 1;
+	letter-spacing: 0.02em;
+	color: rgba(22, 21, 20, 0.68);
+}
+
+.section-title {
+	font-size: clamp(1.7rem, 1.1rem + 1.4vw, 2.6rem);
+	line-height: 1.06;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+}
+
+.paper-panel {
+	background: var(--surface);
+	border: 1px solid var(--line);
+	backdrop-filter: blur(2px);
+	box-shadow: 0 12px 28px rgba(25, 21, 16, 0.07);
+}
+
+.ghost-link {
+	font-family: var(--font-caveat), cursive;
+	font-size: 1.25rem;
+	line-height: 1;
+	color: rgba(22, 21, 20, 0.75);
+	transition: color 150ms ease, transform 150ms ease;
+}
+
+.ghost-link:hover {
+	color: rgba(22, 21, 20, 1);
+	transform: translateX(2px);
 }
 
 .font-script {
@@ -37,9 +100,9 @@ body {
 	gap: 0.45rem;
 	border: 1px solid rgba(23, 23, 23, 0.26);
 	border-radius: 999px;
-	padding: 0.22rem 0.82rem 0.28rem;
+	padding: 0.24rem 0.92rem 0.31rem;
 	font-family: var(--font-caveat), "Comic Sans MS", cursive;
-	font-size: 1.14rem;
+	font-size: 1.2rem;
 	line-height: 1;
 	letter-spacing: 0.01em;
 	color: #202020;
@@ -81,4 +144,10 @@ body {
 .ink-link:focus-visible {
 	outline: 2px solid rgba(18, 18, 18, 0.4);
 	outline-offset: 2px;
+}
+
+@media (min-width: 640px) {
+	.section-rhythm {
+		padding: 1.8rem 0;
+	}
 }

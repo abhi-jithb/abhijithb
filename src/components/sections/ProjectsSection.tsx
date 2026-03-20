@@ -6,13 +6,13 @@ export default function ProjectsSection() {
 
   return (
     <div className="mx-auto w-full max-w-4xl px-5 py-16 text-center sm:px-8 sm:py-20 sm:text-left">
-      {/* Section Title */}
-      <h2 className="mb-10 text-xl font-semibold sm:mb-12">
+      <p className="section-kicker mb-2">Things I shipped</p>
+      <h2 className="section-title mb-10 sm:mb-12">
         Projects
       </h2>
 
       {featuredProject ? (
-        <div className="mb-9 rounded-2xl border border-black/10 bg-white/75 p-5 sm:mb-10 sm:p-6">
+        <div className="paper-panel mb-9 rounded-2xl p-5 sm:mb-10 sm:p-6">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">
             Featured Project
           </p>

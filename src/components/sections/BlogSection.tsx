@@ -4,8 +4,8 @@ import { blogPosts } from "@/lib/data";
 export default function BlogSection() {
   return (
     <div className="mx-auto w-full max-w-4xl px-5 py-16 text-center sm:px-8 sm:py-20 sm:text-left">
-      {/* Section Title */}
-      <h2 className="mb-10 text-xl font-semibold sm:mb-12">
+      <p className="section-kicker mb-2">Notes from the workbench</p>
+      <h2 className="section-title mb-10 sm:mb-12">
         Writing
       </h2>
 

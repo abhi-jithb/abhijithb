@@ -4,7 +4,8 @@ import { siteData } from "@/lib/data";
 export default function AboutSection() {
   return (
     <div className="mx-auto w-full max-w-3xl px-5 py-16 text-center sm:px-8 sm:py-20 sm:text-left">
-      <h2 className="mb-10 text-xl font-semibold sm:mb-12">
+      <p className="section-kicker mb-2">A little context</p>
+      <h2 className="section-title mb-10 sm:mb-12">
         About
       </h2>
       {/* Narrative */}
@@ -34,7 +35,7 @@ export default function AboutSection() {
           <Link
             key={page.href}
             href={page.href}
-            className="rounded-2xl border border-black/10 bg-white/70 p-5 text-center transition-colors hover:bg-white sm:text-left"
+            className="paper-panel rounded-2xl p-5 text-center transition-colors hover:bg-white sm:text-left"
           >
             <p className="mb-1 text-base font-medium text-neutral-900">{page.title}</p>
             <p className="text-sm text-neutral-700">{page.description}</p>
@@ -42,7 +43,7 @@ export default function AboutSection() {
         ))}
       </div>
 
-      <div className="mt-10 rounded-2xl border border-black/10 bg-white/70 p-5 sm:mt-12 sm:p-6">
+      <div className="paper-panel mt-10 rounded-2xl p-5 sm:mt-12 sm:p-6">
         <h3 className="mb-3 text-xs font-medium uppercase tracking-[0.12em] text-neutral-500 sm:text-sm">
           Public Insights
         </h3>

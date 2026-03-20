@@ -22,32 +22,32 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <main className="flex flex-col">
-      <section id="home">
+    <main className="editorial-main flex flex-col">
+      <section id="home" className="section-rhythm">
         <HomeSection />
       </section>
 
-      <section id="about">
+      <section id="about" className="section-rhythm">
         <AboutSection />
       </section>
 
-      <section id="projects">
+      <section id="projects" className="section-rhythm">
         <ProjectsSection />
       </section>
 
-      <section id="events">
+      <section id="events" className="section-rhythm">
         <EventsSection />
       </section>
 
-      <section id="blog">
+      <section id="blog" className="section-rhythm">
         <BlogSection />
       </section>
 
-      <section id="releases">
+      <section id="releases" className="section-rhythm">
         <ReleasesSection />
       </section>
 
-      <section id="contact">
+      <section id="contact" className="section-rhythm">
         <ContactSection />
       </section>
     </main>

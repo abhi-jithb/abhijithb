@@ -43,35 +43,37 @@ export default function Navbar() {
 
   const getLinkClass = (id: string) => {
     const baseClass =
-      "rounded-sm text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/40";
+      "rounded-full px-3 py-1.5 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30";
     const isActive = effectiveSection === id;
 
-    return `${baseClass} ${isActive ? "font-medium text-black" : "text-neutral-700 hover:text-black"}`;
+    return `${baseClass} ${isActive ? "bg-black/10 text-black" : "text-neutral-700 hover:bg-black/5 hover:text-black"}`;
   };
 
   const isEventsRoute = pathname.startsWith("/events");
   const isHackathonsRoute = pathname.startsWith("/hackathons");
+  const baseNavClass =
+    "rounded-full px-3 py-1.5 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-black/10 bg-white/85 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-black/10 bg-[var(--surface-strong)] backdrop-blur-md">
       <div className="mx-auto flex h-16 w-full max-w-5xl items-center justify-between px-5 sm:px-8">
         <Link
           href="/"
-          className="text-sm font-semibold tracking-wide text-black"
+          className="font-script text-2xl leading-none text-black"
           onClick={() => setOpen(false)}
         >
-          ABHIJITH
+          Abhijith
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-2 md:flex" aria-label="Primary">
           {siteData.navItems.map((item) => (
             <Link
               key={item.id}
               href={item.id === "events" ? "/events" : `/#${item.id}`}
               className={
                 item.id === "events"
-                  ? `rounded-sm text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/40 ${
-                      isEventsRoute ? "font-medium text-black" : "text-neutral-700 hover:text-black"
+                  ? `${baseNavClass} ${
+                      isEventsRoute ? "bg-black/10 text-black" : "text-neutral-700 hover:bg-black/5 hover:text-black"
                     }`
                   : getLinkClass(item.id)
               }
@@ -82,8 +84,8 @@ export default function Navbar() {
           ))}
           <Link
             href="/hackathons"
-            className={`rounded-sm text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/40 ${
-              isHackathonsRoute ? "font-medium text-black" : "text-neutral-700 hover:text-black"
+            className={`${baseNavClass} ${
+              isHackathonsRoute ? "bg-black/10 text-black" : "text-neutral-700 hover:bg-black/5 hover:text-black"
             }`}
             aria-current={isHackathonsRoute ? "page" : undefined}
           >
@@ -91,8 +93,8 @@ export default function Navbar() {
           </Link>
           <Link
             href="/profile"
-            className={`rounded-sm text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/40 ${
-              pathname.startsWith("/profile") ? "font-medium text-black" : "text-neutral-700 hover:text-black"
+            className={`${baseNavClass} ${
+              pathname.startsWith("/profile") ? "bg-black/10 text-black" : "text-neutral-700 hover:bg-black/5 hover:text-black"
             }`}
             aria-current={pathname.startsWith("/profile") ? "page" : undefined}
           >
@@ -102,7 +104,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="inline-flex items-center rounded-md border border-black/20 px-3 py-1.5 text-xs font-medium text-black transition-colors hover:bg-black hover:text-white md:hidden"
+          className="inline-flex items-center rounded-full border border-black/20 bg-white/70 px-3.5 py-1.5 text-xs font-medium text-black transition-colors hover:bg-black hover:text-white md:hidden"
           onClick={() => setOpen((prev) => !prev)}
           aria-expanded={open}
           aria-controls="mobile-menu"
