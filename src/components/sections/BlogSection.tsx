@@ -19,29 +19,29 @@ const blogs = [
 
 export default function BlogSection() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-24">
+    <div className="mx-auto w-full max-w-4xl px-5 py-16 sm:px-8 sm:py-20">
       {/* Section Title */}
-      <h2 className="text-xl font-semibold mb-12">
+      <h2 className="mb-10 text-xl font-semibold sm:mb-12">
         Writing
       </h2>
 
       {/* Blog List */}
-      <div className="space-y-10">
+      <div className="space-y-9 sm:space-y-10">
         {blogs.map((blog) => (
-          <div key={blog.title} className="flex flex-col gap-2">
+          <div key={blog.title} className="flex flex-col gap-2.5">
             {/* Date + Title */}
             <div className="flex flex-wrap items-baseline gap-4">
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-neutral-500">
                 {blog.date}
               </span>
 
-              <h3 className="text-base font-medium">
+              <h3 className="text-base font-medium text-neutral-900">
                 {blog.title}
               </h3>
             </div>
 
             {/* Summary */}
-            <p className="text-sm text-gray-700 max-w-2xl">
+            <p className="max-w-2xl text-sm leading-relaxed text-neutral-700">
               {blog.summary}
             </p>
 
@@ -49,7 +49,8 @@ export default function BlogSection() {
             <Link
               href={blog.url}
               target="_blank"
-              className="text-sm text-gray-600 hover:text-black transition-colors w-fit"
+              rel="noopener noreferrer"
+              className="w-fit text-sm text-neutral-600 transition-colors hover:text-black"
             >
               [Read]
             </Link>

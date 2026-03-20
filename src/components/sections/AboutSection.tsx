@@ -1,11 +1,11 @@
 export default function AboutSection() {
   return (
-    <div className="max-w-3xl mx-auto px-6 py-24">
-        <h2 className="text-xl font-semibold mb-12">
-        About   
+    <div className="mx-auto w-full max-w-3xl px-5 py-16 sm:px-8 sm:py-20">
+      <h2 className="mb-10 text-xl font-semibold sm:mb-12">
+        About
       </h2>
       {/* Narrative */}
-      <div className="space-y-6 text-gray-800">
+      <div className="space-y-5 text-sm leading-relaxed text-neutral-800 sm:text-base">
         <p>
           I don’t see technology as an identity. I see it as a tool — something
           that helps me explore ideas, solve problems, and support the people
@@ -25,15 +25,15 @@ export default function AboutSection() {
       </div>
 
       {/* Divider */}
-      <div className="my-12 h-px w-full bg-gray-200" />
+      <div className="my-10 h-px w-full bg-neutral-300/80 sm:my-12" />
 
       {/* Philosophies */}
       <div>
-        <h2 className="text-sm font-medium uppercase tracking-wider text-gray-500 mb-4">
+        <h2 className="mb-4 text-xs font-medium uppercase tracking-[0.12em] text-neutral-500 sm:text-sm">
           Things I believe in
         </h2>
 
-        <ul className="space-y-3 text-gray-700 list-disc list-inside">
+        <ul className="list-inside list-disc space-y-2 text-sm text-neutral-700 sm:text-base">
           <li>Technology is a tool, not who we are</li>
           <li>Helping people grow matters more than being right</li>
           <li>Mental models matter more than arguments</li>

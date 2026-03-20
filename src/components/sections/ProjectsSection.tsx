@@ -22,29 +22,29 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-24">
+    <div className="mx-auto w-full max-w-4xl px-5 py-16 sm:px-8 sm:py-20">
       {/* Section Title */}
-      <h2 className="text-xl font-semibold mb-12">
+      <h2 className="mb-10 text-xl font-semibold sm:mb-12">
         Projects
       </h2>
 
       {/* Projects List */}
-      <div className="space-y-10">
+      <div className="space-y-9 sm:space-y-10">
         {projects.map((project) => (
-          <div key={project.title} className="flex flex-col gap-2">
+          <div key={project.title} className="flex flex-col gap-2.5">
             {/* Year + Title */}
             <div className="flex flex-wrap items-baseline gap-4">
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-neutral-500">
                 {project.year}
               </span>
 
-              <h3 className="text-base font-medium">
+              <h3 className="text-base font-medium text-neutral-900">
                 {project.title}
               </h3>
             </div>
 
             {/* One-liner */}
-            <p className="text-sm text-gray-700 max-w-2xl">
+            <p className="max-w-2xl text-sm leading-relaxed text-neutral-700">
               {project.description}
             </p>
 
@@ -55,7 +55,8 @@ export default function ProjectsSection() {
                   key={link.label}
                   href={link.url}
                   target="_blank"
-                  className="text-gray-600 hover:text-black transition-colors"
+                  rel="noopener noreferrer"
+                  className="text-neutral-600 transition-colors hover:text-black"
                 >
                   [{link.label}]
                 </Link>

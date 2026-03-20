@@ -17,30 +17,30 @@ const releases = [
 
 export default function ReleasesSection() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-24">
+    <div className="mx-auto w-full max-w-4xl px-5 py-16 sm:px-8 sm:py-20">
       {/* Section Title */}
-      <h2 className="text-xl font-semibold mb-12">
+      <h2 className="mb-10 text-xl font-semibold sm:mb-12">
         Releases
       </h2>
 
       {/* Releases List */}
-      <div className="space-y-8">
+      <div className="space-y-7 sm:space-y-8">
         {releases.map((release) => (
           <div
             key={`${release.product}-${release.version}`}
-            className="flex flex-col gap-1"
+            className="flex flex-col gap-1.5"
           >
             {/* Date + Product */}
             <div className="flex flex-wrap items-baseline gap-4">
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-neutral-500">
                 {release.date}
               </span>
 
-              <h3 className="text-base font-medium">
+              <h3 className="text-base font-medium text-neutral-900">
                 {release.product}
               </h3>
 
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-neutral-500">
                 {release.version}
               </span>
             </div>
@@ -49,7 +49,8 @@ export default function ReleasesSection() {
             <Link
               href={release.repo}
               target="_blank"
-              className="text-sm text-gray-600 hover:text-black transition-colors w-fit"
+              rel="noopener noreferrer"
+              className="w-fit text-sm text-neutral-600 transition-colors hover:text-black"
             >
               [Repo]
             </Link>

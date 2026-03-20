@@ -1,3 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+:root {
+	--page-bg: #f7f7f5;
+	--page-text: #171717;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	min-height: 100vh;
+	color: var(--page-text);
+	background:
+		radial-gradient(circle at 10% 5%, #ffffff 0%, #f7f7f5 35%, #f1f1ee 100%);
+}
