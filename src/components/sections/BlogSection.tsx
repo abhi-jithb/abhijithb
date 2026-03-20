@@ -3,7 +3,7 @@ import { blogPosts } from "@/lib/data";
 
 export default function BlogSection() {
   return (
-    <div className="mx-auto w-full max-w-4xl px-5 py-16 sm:px-8 sm:py-20">
+    <div className="mx-auto w-full max-w-4xl px-5 py-16 text-center sm:px-8 sm:py-20 sm:text-left">
       {/* Section Title */}
       <h2 className="mb-10 text-xl font-semibold sm:mb-12">
         Writing
@@ -14,7 +14,7 @@ export default function BlogSection() {
         {blogPosts.map((blog) => (
           <div key={blog.title} className="flex flex-col gap-2.5">
             {/* Date + Title */}
-            <div className="flex flex-wrap items-baseline gap-4">
+            <div className="flex flex-wrap items-baseline justify-center gap-4 sm:justify-start">
               <span className="text-sm text-neutral-500">
                 {blog.date}
               </span>
@@ -25,7 +25,7 @@ export default function BlogSection() {
             </div>
 
             {/* Summary */}
-            <p className="max-w-2xl text-sm leading-relaxed text-neutral-700">
+            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-neutral-700 sm:mx-0">
               {blog.summary}
             </p>
 
@@ -34,7 +34,7 @@ export default function BlogSection() {
               href={blog.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="ink-link w-fit"
+              className="ink-link mx-auto w-fit sm:mx-0"
             >
               Read article
             </Link>

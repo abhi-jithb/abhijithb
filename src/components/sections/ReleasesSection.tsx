@@ -3,7 +3,7 @@ import { releases } from "@/lib/data";
 
 export default function ReleasesSection() {
   return (
-    <div className="mx-auto w-full max-w-4xl px-5 py-16 sm:px-8 sm:py-20">
+    <div className="mx-auto w-full max-w-4xl px-5 py-16 text-center sm:px-8 sm:py-20 sm:text-left">
       {/* Section Title */}
       <h2 className="mb-10 text-xl font-semibold sm:mb-12">
         Releases
@@ -17,7 +17,7 @@ export default function ReleasesSection() {
             className="flex flex-col gap-1.5"
           >
             {/* Date + Product */}
-            <div className="flex flex-wrap items-baseline gap-4">
+            <div className="flex flex-wrap items-baseline justify-center gap-4 sm:justify-start">
               <span className="text-sm text-neutral-500">
                 {release.date}
               </span>
@@ -36,7 +36,7 @@ export default function ReleasesSection() {
               href={release.repo}
               target="_blank"
               rel="noopener noreferrer"
-              className="ink-link w-fit"
+              className="ink-link mx-auto w-fit sm:mx-0"
             >
               Open repo
             </Link>

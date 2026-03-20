@@ -3,7 +3,7 @@ import { siteData } from "@/lib/data";
 
 export default function AboutSection() {
   return (
-    <div className="mx-auto w-full max-w-3xl px-5 py-16 sm:px-8 sm:py-20">
+    <div className="mx-auto w-full max-w-3xl px-5 py-16 text-center sm:px-8 sm:py-20 sm:text-left">
       <h2 className="mb-10 text-xl font-semibold sm:mb-12">
         About
       </h2>
@@ -34,7 +34,7 @@ export default function AboutSection() {
           <Link
             key={page.href}
             href={page.href}
-            className="rounded-2xl border border-black/10 bg-white/70 p-5 transition-colors hover:bg-white"
+            className="rounded-2xl border border-black/10 bg-white/70 p-5 text-center transition-colors hover:bg-white sm:text-left"
           >
             <p className="mb-1 text-base font-medium text-neutral-900">{page.title}</p>
             <p className="text-sm text-neutral-700">{page.description}</p>

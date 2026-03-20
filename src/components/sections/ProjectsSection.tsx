@@ -5,7 +5,7 @@ export default function ProjectsSection() {
   const featuredProject = projects.find((project) => project.featured);
 
   return (
-    <div className="mx-auto w-full max-w-4xl px-5 py-16 sm:px-8 sm:py-20">
+    <div className="mx-auto w-full max-w-4xl px-5 py-16 text-center sm:px-8 sm:py-20 sm:text-left">
       {/* Section Title */}
       <h2 className="mb-10 text-xl font-semibold sm:mb-12">
         Projects
@@ -19,10 +19,10 @@ export default function ProjectsSection() {
           <h3 className="mb-2 text-lg font-semibold text-neutral-900 sm:text-xl">
             {featuredProject.title}
           </h3>
-          <p className="mb-4 max-w-2xl text-sm leading-relaxed text-neutral-700 sm:text-base">
+          <p className="mx-auto mb-4 max-w-2xl text-sm leading-relaxed text-neutral-700 sm:mx-0 sm:text-base">
             {featuredProject.description}
           </p>
-          <div className="flex flex-wrap gap-4 text-sm">
+          <div className="flex flex-wrap justify-center gap-4 text-sm sm:justify-start">
             {featuredProject.links.map((link) => (
               <Link
                 key={`${featuredProject.id}-${link.label}`}
@@ -43,7 +43,7 @@ export default function ProjectsSection() {
         {projects.map((project) => (
           <div key={project.title} className="flex flex-col gap-2.5">
             {/* Year + Title */}
-            <div className="flex flex-wrap items-baseline gap-4">
+            <div className="flex flex-wrap items-baseline justify-center gap-4 sm:justify-start">
               <span className="text-sm text-neutral-500">
                 {project.year}
               </span>
@@ -54,12 +54,12 @@ export default function ProjectsSection() {
             </div>
 
             {/* One-liner */}
-            <p className="max-w-2xl text-sm leading-relaxed text-neutral-700">
+            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-neutral-700 sm:mx-0">
               {project.description}
             </p>
 
             {/* Links */}
-            <div className="flex gap-4 text-sm">
+            <div className="flex flex-wrap justify-center gap-4 text-sm sm:justify-start">
               {project.links.map((link) => (
                 <Link
                   key={link.label}
