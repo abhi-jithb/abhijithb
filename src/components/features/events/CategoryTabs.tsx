@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from "react";
 import type { Event, EventCategory } from "@/lib/data";
-import CategoryFilter from "@/components/events/CategoryFilter";
-import EventTimeline from "@/components/events/EventTimeline";
+import CategoryFilter from "@/components/features/events/CategoryFilter";
+import EventTimeline from "@/components/features/events/EventTimeline";
 
 interface CategoryTabsProps {
   events: Event[];

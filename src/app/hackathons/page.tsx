@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import HackathonShowcase from "@/components/hackathons/HackathonShowcase";
+import HackathonShowcase from "@/components/features/hackathons/HackathonShowcase";
 import { hackathonProjects, hackathonSummary } from "@/lib/data";
 
 export const metadata: Metadata = {

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import CategoryTabs from "@/components/events/CategoryTabs";
+import CategoryTabs from "@/components/features/events/CategoryTabs";
 import { events } from "@/lib/data";
 
 export const metadata: Metadata = {
