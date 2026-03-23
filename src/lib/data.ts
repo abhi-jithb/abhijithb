@@ -545,8 +545,3 @@ export const hackathonProjects: HackathonProject[] = [
   },
 ];
 
-export const getProjects = async (): Promise<Project[]> => projects;
-export const getBlogPosts = async (): Promise<BlogPost[]> => blogPosts;
-export const getReleases = async (): Promise<Release[]> => releases;
-export const getEvents = async (): Promise<Event[]> => events;
-export const getHackathons = async (): Promise<Hackathon[]> => hackathons;

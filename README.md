@@ -135,11 +135,6 @@ src/
       HomeSection.tsx
       ProjectsSection.tsx
       ReleasesSection.tsx
-    ui/
-      BlogRow.tsx
-      ProjectRow.tsx
-      ReleaseRow.tsx
-      SocialLink.tsx
   lib/
     data.ts
 ```
@@ -231,5 +226,4 @@ Typical cycle:
 - Optional: add theme toggle and persist preference.
 
 ### 6. Reduce maintenance overhead
-- Either integrate or remove unused `components/ui/*` pieces.
 - Consider dynamic profile routing (`/profile/[slug]`) to reduce page boilerplate.
