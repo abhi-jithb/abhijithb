@@ -102,7 +102,7 @@ export const siteData = {
   name: "Abhijith B",
   heroLine: "I build useful software, share what I learn, and contribute in public.",
   profileImage: "/assets/images/profile.webp",
-  resumePath: "/resume.pdf",
+  resumePath: "/productInternAbhijithResume.pdf",
   email: "babhijith58@gmail.com",
   location: "Kerala, India",
   role: "Building OSS Projects and Communities | Kerala Tech Builder | TinkerHub | Full-Stack Dev",
