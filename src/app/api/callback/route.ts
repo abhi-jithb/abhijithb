@@ -44,7 +44,7 @@ export async function GET(req: NextRequest) {
 
     const token = data.access_token;
 
-    // Send the token back to Decap CMS on the original page using window.opener.postMessage
+    // Official Decap CMS handshake HTML response
     const html = `
       <!DOCTYPE html>
       <html lang="en">
@@ -68,7 +68,7 @@ export async function GET(req: NextRequest) {
             padding: 2.5rem;
             border-radius: 1.5rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            border: 1px border black/5;
+            border: 1px solid rgba(0,0,0,0.05);
           }
           h2 { margin-top: 0; font-weight: 600; }
           p { color: #78716c; margin-bottom: 0; }
@@ -80,32 +80,32 @@ export async function GET(req: NextRequest) {
           <p>Connecting with your GitHub account, please wait...</p>
         </div>
         <script>
-          const token = "${token}";
-          console.log("GitHub OAuth callback page loaded. Token exists:", !!token);
-          
-          const send = () => {
-            if (window.opener) {
-              console.log("Posting success message to opener window...");
+          (function() {
+            const content = {
+              token: "${token}",
+              provider: "github"
+            };
+
+            function receiveMessage(e) {
+              // Once the opener window responds, send the successful auth message with the token
               window.opener.postMessage(
-                "authorization:github:success:" + JSON.stringify({ token: token, provider: "github" }),
-                "*"
+                "authorization:github:success:" + JSON.stringify(content),
+                e.origin
               );
-              // Delay window.close() to ensure the browser successfully delivers the postMessage
-              console.log("Scheduling popup window close...");
-              setTimeout(() => {
-                console.log("Closing popup window.");
-                window.close();
-              }, 1000);
+              window.removeEventListener("message", receiveMessage, false);
+            }
+
+            if (window.opener) {
+              window.addEventListener("message", receiveMessage, false);
+              // Notify the opener that we are loaded and ready for the handshake
+              window.opener.postMessage("authorizing:github", "*");
             } else {
-              console.warn("Opener window not detected.");
               const p = document.querySelector("p");
               if (p) {
                 p.innerText = "Authorization successful! You can close this window now.";
               }
             }
-          };
-          
-          send();
+          })();
         </script>
       </body>
       </html>
