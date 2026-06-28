@@ -6,7 +6,7 @@ backend:
   # you can use a free OAuth gateway like Decap CMS's community oauth or host your own.
   # base_url: https://your-oauth-provider.com
 
-local_backend: true
+local_backend: false
 publish_mode: simple
 
 media_folder: public/assets/images/blog
