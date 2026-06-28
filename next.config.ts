@@ -5,6 +5,22 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/admin",
+        destination: "/admin/index.html",
+      },
+      {
+        source: "/admin/",
+        destination: "/admin/index.html",
+      },
+      {
+        source: "/config.yml",
+        destination: "/admin/config.yml",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

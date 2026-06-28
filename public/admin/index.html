@@ -1,25 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Abhijith B | Admin Panel</title>
-    <!-- Decap CMS stylesheet and script -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </head>
   <body>
-    <!-- Script to enable Netlify Identity widget redirection if Netlify is used -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- Instruct Decap CMS to wait for manual init -->
     <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", (user) => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
+      window.CMS_MANUAL_INIT = true;
+    </script>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      // Merge only the dynamic backend properties into the configuration loaded from /config.yml
+      CMS.init({
+        config: {
+          backend: {
+            name: "github",
+            repo: "abhi-jithb/abhijithb",
+            branch: "main",
+            base_url: window.location.origin,
+            auth_endpoint: "api/auth"
           }
-        });
-      }
+        }
+      });
     </script>
   </body>
 </html>
