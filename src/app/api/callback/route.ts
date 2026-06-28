@@ -83,11 +83,17 @@ export async function GET(req: NextRequest) {
           const token = "${token}";
           
           const send = () => {
-            // Post authorization message to Decap CMS opener window
-            window.opener.postMessage(
-              "authorization:github:success:" + JSON.stringify({ token: token, provider: "github" }),
-              window.location.origin
-            );
+            if (window.opener) {
+              // Post authorization message to Decap CMS opener window using wildcard origin '*'
+              window.opener.postMessage(
+                "authorization:github:success:" + JSON.stringify({ token: token, provider: "github" }),
+                "*"
+              );
+              // Close the popup window automatically
+              window.close();
+            } else {
+              document.querySelector("p").innerText = "Authorization successful! You can close this window now.";
+            }
           };
           
           send();
