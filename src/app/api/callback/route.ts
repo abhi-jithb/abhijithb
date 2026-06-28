@@ -81,18 +81,27 @@ export async function GET(req: NextRequest) {
         </div>
         <script>
           const token = "${token}";
+          console.log("GitHub OAuth callback page loaded. Token exists:", !!token);
           
           const send = () => {
             if (window.opener) {
-              // Post authorization message to Decap CMS opener window using wildcard origin '*'
+              console.log("Posting success message to opener window...");
               window.opener.postMessage(
                 "authorization:github:success:" + JSON.stringify({ token: token, provider: "github" }),
                 "*"
               );
-              // Close the popup window automatically
-              window.close();
+              // Delay window.close() to ensure the browser successfully delivers the postMessage
+              console.log("Scheduling popup window close...");
+              setTimeout(() => {
+                console.log("Closing popup window.");
+                window.close();
+              }, 1000);
             } else {
-              document.querySelector("p").innerText = "Authorization successful! You can close this window now.";
+              console.warn("Opener window not detected.");
+              const p = document.querySelector("p");
+              if (p) {
+                p.innerText = "Authorization successful! You can close this window now.";
+              }
             }
           };
           

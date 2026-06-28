@@ -12,6 +12,11 @@
     </script>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
+      // Debug helper: log all incoming postMessage events to the console
+      window.addEventListener("message", (e) => {
+        console.log("Decap CMS Admin received postMessage event:", e.origin, e.data);
+      });
+
       // Merge only the dynamic backend properties into the configuration loaded from /config.yml
       CMS.init({
         config: {
