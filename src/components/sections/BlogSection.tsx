@@ -2,181 +2,221 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { BlogPost } from "@/lib/blog";
 
 interface BlogSectionProps {
   posts: BlogPost[];
 }
 
+type SortOption = "newest" | "oldest" | "featured";
+
 export default function BlogSection({ posts }: BlogSectionProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [sortBy, setSortBy] = useState<SortOption>("newest");
 
   // Extract all unique categories
   const categories = ["All", ...Array.from(new Set(posts.map((post) => post.category)))];
 
   // Filter posts based on search and category
-  const filteredPosts = posts.filter((post) => {
+  let filteredPosts = posts.filter((post) => {
+    const query = searchQuery.toLowerCase().trim();
     const matchesSearch =
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+      query === "" ||
+      post.title.toLowerCase().includes(query) ||
+      post.summary.toLowerCase().includes(query) ||
+      post.tags.some((tag) => tag.toLowerCase().includes(query));
     
     const matchesCategory = selectedCategory === "All" || post.category === selectedCategory;
 
     return matchesSearch && matchesCategory;
   });
 
-  // Find the featured post (only if no active search/category filter)
-  const isFiltering = searchQuery !== "" || selectedCategory !== "All";
-  const featuredPost = !isFiltering ? posts.find((post) => post.featured) || posts[0] : null;
-  
-  // Remaining posts to show in the list
-  const listPosts = featuredPost
-    ? filteredPosts.filter((post) => post.slug !== featuredPost.slug)
-    : filteredPosts;
+  // Sort posts
+  filteredPosts = [...filteredPosts].sort((a, b) => {
+    if (sortBy === "featured") {
+      // Show featured posts first, then newest
+      if (a.featured && !b.featured) return -1;
+      if (!a.featured && b.featured) return 1;
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    }
+    if (sortBy === "oldest") {
+      return new Date(a.date).getTime() - new Date(b.date).getTime();
+    }
+    // Default newest
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
 
   return (
-    <div className="mx-auto w-full max-w-4xl px-5 py-16 text-center sm:px-8 sm:py-20 sm:text-left">
-      <p className="section-kicker mb-2">Notes from the workbench</p>
-      <h2 className="section-title mb-6 sm:mb-8">Blog</h2>
-      
-      <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-neutral-700 sm:mx-0 sm:mb-10 sm:text-base">
-        A quiet space for sharing notes, ideas, and stories about building software, community, and learning.
-      </p>
-
-      {/* Search and Filters */}
-      <div className="mb-10 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-center sm:justify-between">
-        {/* Search Input */}
-        <input
-          type="text"
-          placeholder="Search articles, tags..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="paper-panel w-full rounded-full bg-white/70 px-5 py-2.5 text-sm text-neutral-900 placeholder-neutral-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-black/10 sm:max-w-xs"
-        />
-
-        {/* Categories Tabs */}
-        <div className="flex flex-wrap justify-center gap-1.5 sm:justify-start">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`rounded-full px-3.5 py-1.5 text-xs transition-colors cursor-pointer ${
-                selectedCategory === category
-                  ? "bg-black text-white font-medium"
-                  : "bg-white/50 text-neutral-700 border border-black/10 hover:bg-black/5 hover:text-black"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+    <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:py-12">
+      {/* Title Header */}
+      <div className="mb-10 text-center sm:text-left">
+        <p className="section-kicker mb-2">Notes from the workbench</p>
+        <h2 className="section-title mb-4">Blog</h2>
+        <p className="max-w-2xl text-sm leading-relaxed text-neutral-600 sm:text-base">
+          A quiet space for sharing notes, ideas, and stories about building software, open source, and design.
+        </p>
       </div>
 
-      {/* Featured Article */}
-      {featuredPost && (
-        <div className="paper-panel mb-12 rounded-2xl p-6 text-center transition-colors sm:mb-16 sm:p-8 sm:text-left">
-          <div className="mb-3 flex items-center justify-center gap-2 text-xs sm:justify-start">
-            <span className="font-semibold uppercase tracking-[0.14em] text-neutral-500">
-              Featured Article
-            </span>
-            <span className="text-neutral-300">•</span>
-            <span className="rounded-full bg-neutral-900/10 px-2.5 py-0.5 text-neutral-800 font-medium">
-              {featuredPost.category}
-            </span>
-          </div>
+      {/* Search and Filters */}
+      <div className="mb-10 flex flex-col gap-5 border-b border-neutral-200/50 pb-8">
+        {/* Search Input */}
+        <div className="relative w-full sm:max-w-md">
+          <input
+            type="text"
+            placeholder="Search articles, tags, or topics..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full rounded-xl border border-neutral-200 bg-white px-4 py-3 pl-10 text-sm text-neutral-900 shadow-sm placeholder-neutral-400 focus:border-neutral-400 focus:outline-none focus:ring-1 focus:ring-neutral-400"
+          />
+          <span className="absolute left-3.5 top-3.5 text-neutral-400 text-sm select-none">
+            🔍
+          </span>
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery("")}
+              className="absolute right-3 top-3.5 text-neutral-400 hover:text-black text-xs cursor-pointer"
+            >
+              Clear
+            </button>
+          )}
+        </div>
 
-          <Link href={`/blog/${featuredPost.slug}`} className="group block">
-            <h3 className="mb-3 text-xl font-semibold text-neutral-900 group-hover:text-black group-hover:underline sm:text-2xl">
-              {featuredPost.title}
-            </h3>
-          </Link>
-          
-          <p className="mx-auto mb-5 max-w-2xl text-sm leading-relaxed text-neutral-700 sm:mx-0 sm:text-base">
-            {featuredPost.summary}
-          </p>
-
-          <div className="mb-6 flex flex-wrap justify-center gap-1.5 sm:justify-start">
-            {featuredPost.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-xs text-neutral-500"
+        {/* Filters Controls Row */}
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          {/* Categories Tabs */}
+          <div className="flex flex-wrap gap-1.5">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`rounded-lg px-3.5 py-1.5 text-xs transition-all cursor-pointer ${
+                  selectedCategory === category
+                    ? "bg-neutral-900 text-white font-medium shadow-sm"
+                    : "bg-white text-neutral-600 border border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50"
+                }`}
               >
-                #{tag}
-              </span>
+                {category}
+              </button>
             ))}
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-neutral-500 sm:justify-start">
-            <span>{featuredPost.date}</span>
-            <span>•</span>
-            <span>{featuredPost.readingTime} min read</span>
-            <span>•</span>
-            <Link
-              href={`/blog/${featuredPost.slug}`}
-              className="ink-link text-sm font-medium"
+          {/* Sort Control */}
+          <div className="flex items-center gap-2 self-start sm:self-auto">
+            <span className="text-xs text-neutral-400 font-medium">Sort:</span>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as SortOption)}
+              className="rounded-lg border border-neutral-200 bg-white px-3 py-1.5 text-xs text-neutral-700 shadow-sm focus:border-neutral-400 focus:outline-none cursor-pointer"
             >
-              Read article
-            </Link>
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+              <option value="featured">Featured first</option>
+            </select>
           </div>
         </div>
-      )}
+      </div>
 
-      {/* Blog List */}
-      <div className="space-y-10 sm:space-y-12">
-        {listPosts.map((blog) => (
-          <div key={blog.slug} className="flex flex-col gap-3">
-            {/* Meta Line */}
-            <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-neutral-500 sm:justify-start">
-              <span>{blog.date}</span>
-              <span>•</span>
-              <span>{blog.readingTime} min read</span>
-              <span>•</span>
-              <span className="rounded-full bg-black/5 px-2.5 py-0.5 text-neutral-700">
-                {blog.category}
-              </span>
+      {/* Blog Cards Grid */}
+      <div className="grid gap-8 sm:grid-cols-2">
+        {filteredPosts.map((blog) => (
+          <article
+            key={blog.slug}
+            className={`paper-panel group relative flex flex-col justify-between overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-neutral-300/80 ${
+              blog.featured ? "sm:col-span-2 border-neutral-300" : "border-neutral-200/60"
+            }`}
+          >
+            {/* Cute Accent for Featured Posts */}
+            {blog.featured && (
+              <div className="absolute top-0 left-0 w-full h-[3px] bg-neutral-900" />
+            )}
+
+            <div>
+              {/* Cover Image */}
+              {blog.coverImage ? (
+                <Link href={`/blog/${blog.slug}`} className="relative block aspect-[16/9] w-full overflow-hidden border-b border-neutral-200/50 bg-neutral-100">
+                  <Image
+                    src={blog.coverImage}
+                    alt={blog.coverImageAlt || blog.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-102"
+                    sizes={blog.featured ? "(max-w-4xl) 100vw, 860px" : "(max-w-2xl) 100vw, 420px"}
+                  />
+                </Link>
+              ) : (
+                <div className="relative aspect-[16/9] w-full border-b border-neutral-200/50 bg-neutral-50 flex items-center justify-center select-none text-4xl">
+                  📝
+                </div>
+              )}
+
+              {/* Content area */}
+              <div className="p-6">
+                {/* Meta details */}
+                <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-neutral-400">
+                  <span className="rounded-full bg-neutral-900/5 px-2.5 py-0.5 font-medium text-neutral-700">
+                    {blog.category}
+                  </span>
+                  <span>•</span>
+                  <span>{blog.date}</span>
+                  <span>•</span>
+                  <span>{blog.readingTime} min read</span>
+                  {blog.featured && (
+                    <>
+                      <span>•</span>
+                      <span className="text-neutral-900 font-semibold uppercase tracking-wider text-[9px]">
+                        ★ Featured
+                      </span>
+                    </>
+                  )}
+                </div>
+
+                {/* Title */}
+                <h3 className="mb-2 text-lg font-bold text-neutral-900 group-hover:text-black group-hover:underline sm:text-xl leading-snug">
+                  <Link href={`/blog/${blog.slug}`}>
+                    {blog.title}
+                  </Link>
+                </h3>
+
+                {/* Summary */}
+                <p className="mb-4 text-xs sm:text-sm text-neutral-600 line-clamp-3 leading-relaxed">
+                  {blog.summary}
+                </p>
+              </div>
             </div>
 
-            {/* Title */}
-            <h3 className="text-lg font-semibold text-neutral-900 sm:text-xl">
-              <Link href={`/blog/${blog.slug}`} className="hover:underline">
-                {blog.title}
-              </Link>
-            </h3>
+            {/* Bottom details (Tags + Read link) */}
+            <div className="px-6 pb-6 pt-0 border-t border-neutral-100/50 mt-auto flex flex-col gap-4">
+              {/* Tags */}
+              <div className="flex flex-wrap gap-1.5">
+                {blog.tags.map((tag) => (
+                  <button
+                    key={tag}
+                    onClick={() => setSearchQuery(tag)}
+                    className="text-[11px] text-neutral-400 hover:text-neutral-700 transition-colors"
+                  >
+                    #{tag}
+                  </button>
+                ))}
+              </div>
 
-            {/* Summary */}
-            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-neutral-700 sm:mx-0">
-              {blog.summary}
-            </p>
-
-            {/* Tags */}
-            <div className="flex flex-wrap justify-center gap-2 sm:justify-start">
-              {blog.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs text-neutral-500"
+              {/* Action Link */}
+              <div className="flex items-center justify-between">
+                <Link
+                  href={`/blog/${blog.slug}`}
+                  className="ink-link text-xs"
                 >
-                  #{tag}
-                </span>
-              ))}
+                  Read article
+                </Link>
+              </div>
             </div>
-
-            {/* Read link */}
-            <div className="mt-1 flex justify-center sm:justify-start">
-              <Link
-                href={`/blog/${blog.slug}`}
-                className="ink-link"
-              >
-                Read article
-              </Link>
-            </div>
-          </div>
+          </article>
         ))}
 
         {filteredPosts.length === 0 && (
-          <div className="py-12">
-            <p className="text-neutral-500">No articles found matching your criteria.</p>
+          <div className="py-16 text-center sm:col-span-2">
+            <span className="text-3xl">🏜️</span>
+            <p className="mt-3 text-sm text-neutral-500">No articles match your search criteria.</p>
           </div>
         )}
       </div>

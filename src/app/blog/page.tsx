@@ -15,6 +15,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 60; // Enable ISR revalidation every 60 seconds
+
 export default function BlogPage() {
   const posts = getBlogPosts();
   return (

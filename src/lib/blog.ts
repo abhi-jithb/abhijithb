@@ -6,11 +6,15 @@ import { marked } from "marked";
 export interface BlogPost {
   slug: string;
   title: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  author?: string;
   date: string;
   summary: string;
   category: string;
   tags: string[];
   coverImage?: string;
+  coverImageAlt?: string;
   draft: boolean;
   featured: boolean;
   readingTime: number; // in minutes
@@ -47,11 +51,15 @@ export function getBlogPosts(includeDrafts = false): BlogPost[] {
       return {
         slug,
         title: data.title || "Untitled",
+        seoTitle: data.seoTitle,
+        seoDescription: data.seoDescription,
+        author: data.author || "Abhijith B",
         date: data.date || new Date().toISOString().split('T')[0],
         summary: data.summary || "",
         category: data.category || "General",
         tags: data.tags || [],
         coverImage: data.coverImage,
+        coverImageAlt: data.coverImageAlt,
         draft: !!data.draft,
         featured: !!data.featured,
         readingTime,
@@ -83,11 +91,15 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     return {
       slug,
       title: data.title || "Untitled",
+      seoTitle: data.seoTitle,
+      seoDescription: data.seoDescription,
+      author: data.author || "Abhijith B",
       date: data.date || new Date().toISOString().split('T')[0],
       summary: data.summary || "",
       category: data.category || "General",
       tags: data.tags || [],
       coverImage: data.coverImage,
+      coverImageAlt: data.coverImageAlt,
       draft: !!data.draft,
       featured: !!data.featured,
       readingTime,
