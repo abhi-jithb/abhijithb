@@ -159,19 +159,45 @@ src/
 
 This setup keeps section components mostly presentational and makes future content migration to CMS/API straightforward.
 
-## Design System Highlights
+## Design System & Creative Highlights
 
-Typography:
+This portfolio showcases how to blend standard editorial styling with playful, custom-animated components to build a memorable and unique personal identity.
+
+### 🎨 Hand-Crafted Custom Vector Icons (React + Framer Motion)
+Instead of relying on generic icon packs, we designed a custom set of wobbly, hand-drawn vector icons matching the warm typography of the site:
+- **About (Smiling Face):** A cute line face that rotates and wiggles playfully on hover.
+- **Blog (Notebook & Pen):** Automatically draws a pen stroke across the document (`pathLength` animation) when hovered.
+- **Projects (Folder Stack):** Bounces up on hover using spring physics.
+- **Contact (Heart Envelope):** Features a miniature red heart in the center that pops (scales up) on hover.
+- **Profile (Sparkle Badge):** A 4-point sparkle star that scales and rotates 45 degrees on hover.
+
+*Tip for developers:* Avoid generic icons! Designing your own SVG paths in React and pairing them with Framer Motion spring physics elevates the aesthetic of a site instantly.
+
+### 📱 Mobile Floating Sidebar Menu
+To optimize the mobile user experience, we replaced the traditional full-screen hamburger menu with a floating sidebar menu placed at the bottom right:
+- **Collapsed Button:** A sleek, 12x12 pill button with a custom 9-dot grid icon.
+- **Expanded Panel:** Animates open to show a vertical pill list of custom icons and text labels.
+- **Scroll Hide/Show:** Hides on scroll-down to maximize readability and slides back in on scroll-up.
+- **Tap-Outside Backdrop:** Closes immediately when clicking anywhere on the screen backdrop.
+- **Thumb-Friendly:** Designed with touch targets placed in the natural resting zone of a mobile user's thumb.
+
+### 🖼️ Hero Portrait Composition
+To integrate the transparent background portrait naturally:
+- **Depth Shadow:** Used a CSS `drop-shadow` filter on the silhouette of the photo to create high-fidelity shadows following the outline of the shoulders and hair.
+- **Creative Layers:** Placed 4 glowing, semi-transparent pastel color bubbles underneath the portrait.
+- **SVG Doodles:** Blended concentric hand-drawn wobbly dotted loops and tiny sparkles into the background card, creating a warm, editorial sketchbook feel.
+
+### Typography
 - `Newsreader` as primary body/editorial font
-- `Caveat` as handwritten accent for labels and action links
+- `Caveat` as handwritten accent for labels, active links, and logo offsets
 
-Visual language:
+### Visual Language
 - Soft paper-like background gradients
 - Glassy surface cards via `paper-panel`
 - Editorial spacing cadence via `section-rhythm`
 - Tactile micro-CTA style for external links via `ink-link`
 
-Mobile behavior:
+### Mobile Behavior
 - Mobile-specific home spacing and viewport-safe hero height (`100svh`)
 - Centered content on small screens with desktop left alignment in content-heavy sections
 

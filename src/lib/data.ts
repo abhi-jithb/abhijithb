@@ -101,7 +101,7 @@ export interface HackathonProject {
 export const siteData = {
   name: "Abhijith B",
   heroLine: "I build useful software, share what I learn, and contribute in public.",
-  profileImage: "/assets/images/profile.webp",
+  profileImage: "/assets/images/profile.avif",
   resumePath: "/productInternAbhijithResume.pdf",
   email: "babhijith58@gmail.com",
   location: "Kerala, India",
@@ -112,7 +112,7 @@ export const siteData = {
     { id: "about", label: "About" },
     { id: "projects", label: "Projects" },
     { id: "events", label: "Events" },
-    { id: "blog", label: "Writing" },
+    { id: "blog", label: "Blog" },
     { id: "releases", label: "Releases" },
     { id: "contact", label: "Contact" },
   ] satisfies NavItem[],

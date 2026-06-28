@@ -1,0 +1,30 @@
+backend:
+  name: github
+  repo: abhi-jithb/abhijithb
+  branch: main
+  # Optional: For authentication on Vercel/non-Netlify hosting,
+  # you can use a free OAuth gateway like Decap CMS's community oauth or host your own.
+  # base_url: https://your-oauth-provider.com
+
+local_backend: true
+publish_mode: simple
+
+media_folder: public/assets/images/blog
+public_folder: /assets/images/blog
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Category", name: "category", widget: "select", options: ["Startup", "Open Source", "Reflection", "General"] }
+      - { label: "Tags", name: "tags", widget: "list", default: ["general"] }
+      - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
+      - { label: "Draft", name: "draft", widget: "boolean", default: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }
