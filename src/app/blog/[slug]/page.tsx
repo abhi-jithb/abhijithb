@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/blog";
+import { formatDate } from "@/lib/date";
 import ReadingProgressBar from "@/components/features/blog/ReadingProgressBar";
 import BlogReactions from "@/components/features/blog/BlogReactions";
 import ShareButtons from "@/components/features/blog/ShareButtons";
@@ -124,7 +125,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         {/* Article Header */}
         <header className="mb-8 text-left">
           <div className="mb-4 flex flex-wrap items-center gap-2.5 text-xs text-neutral-500">
-            <span>{post.date}</span>
+            <span>{formatDate(post.date)}</span>
             <span>•</span>
             <span>{post.readingTime} min read</span>
             <span>•</span>

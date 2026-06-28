@@ -9,7 +9,7 @@ export interface BlogPost {
   seoTitle?: string;
   seoDescription?: string;
   author?: string;
-  date: string;
+  date: string; // ISO date string (YYYY-MM-DD)
   summary: string;
   category: string;
   tags: string[];
@@ -29,6 +29,17 @@ function calculateReadingTime(text: string): number {
   const wordsPerMinute = 200;
   const words = text.trim().split(/\s+/).length;
   return Math.ceil(words / wordsPerMinute);
+}
+
+// Convert gray-matter date to string safely
+function normalizeDate(rawDate: any): string {
+  if (!rawDate) {
+    return new Date().toISOString().split("T")[0];
+  }
+  if (rawDate instanceof Date) {
+    return rawDate.toISOString().split("T")[0];
+  }
+  return String(rawDate).trim();
 }
 
 // Get all posts sorted by date
@@ -54,7 +65,7 @@ export function getBlogPosts(includeDrafts = false): BlogPost[] {
         seoTitle: data.seoTitle,
         seoDescription: data.seoDescription,
         author: data.author || "Abhijith B",
-        date: data.date || new Date().toISOString().split('T')[0],
+        date: normalizeDate(data.date),
         summary: data.summary || "",
         category: data.category || "General",
         tags: data.tags || [],
@@ -94,7 +105,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       seoTitle: data.seoTitle,
       seoDescription: data.seoDescription,
       author: data.author || "Abhijith B",
-      date: data.date || new Date().toISOString().split('T')[0],
+      date: normalizeDate(data.date),
       summary: data.summary || "",
       category: data.category || "General",
       tags: data.tags || [],

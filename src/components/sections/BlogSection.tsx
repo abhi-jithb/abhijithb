@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BlogPost } from "@/lib/blog";
+import { formatDate } from "@/lib/date";
 
 interface BlogSectionProps {
   posts: BlogPost[];
@@ -158,7 +159,7 @@ export default function BlogSection({ posts }: BlogSectionProps) {
                     {blog.category}
                   </span>
                   <span>•</span>
-                  <span>{blog.date}</span>
+                  <span>{formatDate(blog.date)}</span>
                   <span>•</span>
                   <span>{blog.readingTime} min read</span>
                   {blog.featured && (

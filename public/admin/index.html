@@ -25,6 +25,82 @@
           local_backend: false
         }
       });
+
+      // Register a custom preview template to provide one-click link sharing on mobile/desktop
+      CMS.registerPreviewTemplate("blog", createClass({
+        render: function() {
+          const entry = this.props.entry;
+          const title = entry.getIn(["data", "title"]) || "";
+          const summary = entry.getIn(["data", "summary"]) || "";
+          const date = entry.getIn(["data", "date"]) || "";
+          const category = entry.getIn(["data", "category"]) || "General";
+          const body = this.props.widgetFor("body");
+          const coverImage = this.props.getAsset(entry.getIn(["data", "coverImage"]));
+
+          // Try to generate a URL slug based on the title
+          const slug = entry.getIn(["data", "title"])
+            ? entry.getIn(["data", "title"])
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/(^-|-$)/g, "")
+            : "";
+          const liveUrl = window.location.origin + "/blog/" + slug;
+
+          return h("div", { style: { padding: "20px", fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", color: "#1c1917" } },
+            h("div", {
+              style: {
+                background: "#fdfbf7",
+                border: "1px solid #e7e5e4",
+                padding: "16px",
+                borderRadius: "12px",
+                marginBottom: "24px",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.03)"
+              }
+            },
+              h("h4", { style: { margin: "0 0 6px 0", fontSize: "14px", fontWeight: "600" } }, "📋 Blog Sharing Options"),
+              h("p", { style: { margin: "0 0 10px 0", fontSize: "12px", color: "#6b6661" } }, "Once you hit publish, the live link will be:"),
+              h("div", {
+                style: {
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  background: "#f5f5f4",
+                  padding: "8px 12px",
+                  borderRadius: "8px",
+                  border: "1px solid #e7e5e4",
+                  marginBottom: "12px"
+                }
+              },
+                h("code", { style: { flex: 1, fontSize: "11px", wordBreak: "break-all", color: "#111" } }, liveUrl)
+              ),
+              h("button", {
+                onClick: function() {
+                  navigator.clipboard.writeText(liveUrl);
+                  alert("Copied post's estimated live URL to clipboard!");
+                },
+                style: {
+                  background: "#1c1917",
+                  color: "#fff",
+                  border: "none",
+                  padding: "8px 16px",
+                  borderRadius: "999px",
+                  fontSize: "12px",
+                  fontWeight: "600",
+                  cursor: "pointer",
+                  boxShadow: "0 1px 2px rgba(0,0,0,0.05)"
+                }
+              }, "Copy Live Link")
+            ),
+            h("div", { className: "blog-post-preview" },
+              h("div", { style: { fontSize: "12px", color: "#6b6661", marginBottom: "8px" } }, date + " • " + category),
+              h("h1", { style: { fontSize: "32px", fontWeight: "700", margin: "0 0 12px 0", color: "#111" } }, title),
+              summary && h("p", { style: { fontSize: "16px", fontStyle: "italic", color: "#44403c", margin: "0 0 24px 0", borderLeft: "2px solid #d6d3d1", paddingLeft: "12px" } }, summary),
+              coverImage && h("img", { src: coverImage.toString(), style: { width: "100%", height: "auto", borderRadius: "12px", marginBottom: "24px" } }),
+              h("div", { style: { fontSize: "16px", lineHeight: "1.6" } }, body)
+            )
+          );
+        }
+      }));
     </script>
   </body>
 </html>
