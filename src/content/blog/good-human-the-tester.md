@@ -1,10 +1,10 @@
 ---
 title: Good Human - The Tester
 seoTitle: Story of a Good Human
-seoDescription: This is a story a simple human being who spreads joy in the workspace...
+seoDescription: This is a story of a simple human being who spreads joy in the workspace...
 author: Abhijith B
 date: 2026-06-29
-summary: This is a story a simple human being who spreads joy in the workspace
+summary: This is a story of a simple human being who spreads joy in the workspace
 category: General
 tags:
   - general
