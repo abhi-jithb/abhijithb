@@ -1,6 +1,6 @@
 ---
 title: The Partner Who Never Left My Side
-seoTitle: The Unexpected Partner Behind My First Month of Work Life (A Story About Chai)
+seoTitle: The Unexpected Partner Behind My First Month of Work Life 🥰
 seoDescription: For the past month, my work life has been filled with new
   technologies, deadlines, bugs, and moments of self-doubt. Through every good
   and bad day, one silent companion has been there without fail. This is a story
