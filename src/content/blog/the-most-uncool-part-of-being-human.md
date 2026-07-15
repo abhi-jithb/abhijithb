@@ -14,7 +14,7 @@ summary: This essay explores a less visible kind of human struggle -> not
 category: Reflection
 tags:
   - general
-coverImage: /assets/images/blog/1000025730.jpg
+coverImage: /assets/images/blog/1000033127.jpg
 draft: false
 featured: true
 ---
