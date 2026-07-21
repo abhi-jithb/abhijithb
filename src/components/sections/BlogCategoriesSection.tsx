@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { BlogPost } from "@/lib/blog";
 
 interface BlogCategoriesSectionProps {
@@ -81,7 +81,7 @@ export default function BlogCategoriesSection({ posts }: BlogCategoriesSectionPr
   };
 
   // Stagger variants for grid items
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -91,7 +91,7 @@ export default function BlogCategoriesSection({ posts }: BlogCategoriesSectionPr
     },
   };
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: {
       opacity: 1,
@@ -104,7 +104,7 @@ export default function BlogCategoriesSection({ posts }: BlogCategoriesSectionPr
     },
   };
 
-  const iconVariants = {
+  const iconVariants: Variants = {
     hover: {
       scale: 1.15,
       y: -4,
