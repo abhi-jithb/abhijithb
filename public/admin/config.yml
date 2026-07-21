@@ -29,4 +29,4 @@ collections:
       - { label: "Cover Image Alt Text", name: "coverImageAlt", widget: "string", required: false }
       - { label: "Draft", name: "draft", widget: "boolean", default: false }
       - { label: "Featured", name: "featured", widget: "boolean", default: false }
-      - { label: "Body", name: "body", widget: "markdown", buttons: ["bold", "italic", "strikethrough", "code", "link", "heading-one", "heading-two", "heading-three", "heading-four", "heading-five", "heading-six", "quote", "bulleted-list", "numbered-list", "image"] }
+      - { label: "Body", name: "body", widget: "markdown", buttons: ["bold", "italic", "strikethrough", "code", "link", "heading-one", "heading-two", "heading-three", "heading-four", "heading-five", "heading-six", "quote", "bulleted-list", "numbered-list"] }
