@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import  ProjectsSection  from "@/components/sections/ProjectsSection";
+import ProjectsSection from "@/components/sections/ProjectsSection";
+import { getRankedGitHubProjects } from "@/lib/github";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ProjectsPage() {
-  return <ProjectsSection />;
+export default async function ProjectsPage() {
+  const projects = await getRankedGitHubProjects(12); // Fetch up to 12 projects for the showcase
+  return <ProjectsSection initialProjects={projects} />;
 }
