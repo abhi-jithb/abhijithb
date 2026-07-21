@@ -23,10 +23,10 @@ collections:
       - { label: "Author", name: "author", widget: "string", default: "Abhijith B", required: false }
       - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Summary", name: "summary", widget: "text" }
-      - { label: "Category", name: "category", widget: "select", options: ["Startup", "Open Source", "Reflection", "General"] }
-      - { label: "Tags", name: "tags", widget: "list", default: ["general"] }
+      - { label: "Category", name: "category", widget: "select", options: ["Self", "People", "Tech", "Projects", "Philosophy", "Books"] }
+      - { label: "Tags", name: "tags", widget: "select", multiple: true, create: true, options: ["general", "reflection", "personal", "tech", "projects", "philosophy", "books", "people", "coworker", "learning", "git", "github", "open-source", "mentorship", "portfolio", "nextjs", "love", "existential-crisis", "personal-growth", "chai", "startup", "launch", "entrepreneurship", "goals", "community"] }
       - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
       - { label: "Cover Image Alt Text", name: "coverImageAlt", widget: "string", required: false }
       - { label: "Draft", name: "draft", widget: "boolean", default: false }
       - { label: "Featured", name: "featured", widget: "boolean", default: false }
-      - { label: "Body", name: "body", widget: "markdown", modes: ["raw"] }
+      - { label: "Body", name: "body", widget: "markdown", buttons: ["bold", "italic", "strikethrough", "code", "link", "heading-one", "heading-two", "heading-three", "heading-four", "heading-five", "heading-six", "quote", "bulleted-list", "numbered-list", "image"] }
