@@ -198,15 +198,13 @@ export default function CategoryBlogSection({
             })}
           </div>
         )}
-      </div>
-
-      {/* Blog Cards Grid */}
-      <div className="grid gap-8 sm:grid-cols-2">
+      </d      {/* Blog Cards Grid */}
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {paginatedPosts.map((blog) => (
           <article
             key={blog.slug}
-            className={`paper-panel group relative flex flex-col justify-between overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-neutral-300/80 ${
-              blog.featured ? "sm:col-span-2 border-neutral-300" : "border-neutral-200/60"
+            className={`paper-panel group relative flex flex-col justify-between overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-neutral-300/80 h-full ${
+              blog.featured ? "md:col-span-2 lg:col-span-2 border-neutral-300" : "border-neutral-200/60"
             }`}
           >
             {/* Featured Post Indicator */}
@@ -214,7 +212,7 @@ export default function CategoryBlogSection({
               <div className="absolute top-0 left-0 w-full h-[3px] bg-neutral-900" />
             )}
 
-            <div>
+            <div className="flex flex-col flex-grow">
               {/* Cover Image */}
               {blog.coverImage ? (
                 <Link
@@ -226,7 +224,7 @@ export default function CategoryBlogSection({
                     alt={blog.coverImageAlt || blog.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-102"
-                    sizes={blog.featured ? "(max-w-4xl) 100vw, 860px" : "(max-w-2xl) 100vw, 420px"}
+                    sizes={blog.featured ? "(max-w-4xl) 100vw, 600px" : "(max-w-2xl) 100vw, 300px"}
                   />
                 </Link>
               ) : (
@@ -236,7 +234,7 @@ export default function CategoryBlogSection({
               )}
 
               {/* Content Area */}
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 {/* Meta Details */}
                 <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-neutral-400">
                   <span className="rounded-full bg-neutral-900/5 px-2.5 py-0.5 font-medium text-neutral-700">
@@ -257,21 +255,21 @@ export default function CategoryBlogSection({
                 </div>
 
                 {/* Title */}
-                <h3 className="mb-2 text-lg font-bold text-neutral-900 group-hover:text-black group-hover:underline sm:text-xl leading-snug">
+                <h3 className="mb-2 text-lg font-bold text-neutral-900 group-hover:text-black group-hover:underline sm:text-xl leading-snug line-clamp-2 h-14 overflow-hidden">
                   <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
                 </h3>
 
                 {/* Summary */}
-                <p className="mb-4 text-xs sm:text-sm text-neutral-600 line-clamp-3 leading-relaxed">
+                <p className="mb-4 text-xs sm:text-sm text-neutral-600 line-clamp-3 leading-relaxed flex-grow">
                   {blog.summary}
                 </p>
               </div>
             </div>
 
             {/* Bottom details (Tags + Read link) */}
-            <div className="px-6 pb-6 pt-0 border-t border-neutral-100/50 mt-auto flex flex-col gap-4">
+            <div className="px-6 pb-6 pt-0 border-t border-neutral-100/50 flex flex-col gap-4 mt-auto">
               {/* Tags */}
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1.5 pt-4">
                 {blog.tags.map((tag) => (
                   <button
                     key={tag}
