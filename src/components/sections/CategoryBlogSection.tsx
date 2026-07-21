@@ -134,6 +134,7 @@ export default function CategoryBlogSection({
                 setSearchQuery(e.target.value);
                 setCurrentPage(1);
               }}
+              aria-label={`Search articles in ${categoryName}`}
               className="w-full rounded-xl border border-neutral-200 bg-white px-4 py-3 pl-10 text-sm text-neutral-900 shadow-sm placeholder-neutral-400 focus:border-neutral-400 focus:outline-none focus:ring-1 focus:ring-neutral-400"
             />
             <span className="absolute left-3.5 top-3.5 text-neutral-400 text-sm select-none">
@@ -145,6 +146,7 @@ export default function CategoryBlogSection({
                   setSearchQuery("");
                   setCurrentPage(1);
                 }}
+                aria-label="Clear search query"
                 className="absolute right-3 top-3.5 text-neutral-400 hover:text-black text-xs cursor-pointer"
               >
                 Clear
@@ -160,6 +162,7 @@ export default function CategoryBlogSection({
                 setSortBy(e.target.value as SortOption);
                 setCurrentPage(1);
               }}
+              aria-label="Sort articles"
               className="rounded-lg border border-neutral-200 bg-white px-3 py-1.5 text-xs text-neutral-700 shadow-sm focus:border-neutral-400 focus:outline-none cursor-pointer"
             >
               <option value="newest">Newest first</option>
@@ -181,6 +184,8 @@ export default function CategoryBlogSection({
                 <button
                   key={tag}
                   onClick={() => handleTagToggle(tag)}
+                  aria-pressed={isSelected}
+                  aria-label={`Filter by tag ${tag}`}
                   className={`rounded-lg px-3 py-1 text-xs transition-all cursor-pointer ${
                     isSelected
                       ? "bg-neutral-900 text-white font-medium shadow-sm"
@@ -271,6 +276,8 @@ export default function CategoryBlogSection({
                   <button
                     key={tag}
                     onClick={() => handleTagToggle(tag)}
+                    aria-pressed={selectedTag === tag}
+                    aria-label={`Toggle tag ${tag}`}
                     className={`text-[11px] hover:underline transition-colors ${
                       selectedTag === tag ? "text-neutral-900 font-bold" : "text-neutral-400 hover:text-neutral-700"
                     }`}
@@ -300,10 +307,11 @@ export default function CategoryBlogSection({
 
       {/* Pagination Controls */}
       {totalPages > 1 && (
-        <div className="mt-12 flex items-center justify-center gap-2 border-t border-neutral-200/50 pt-8">
+        <div className="mt-12 flex items-center justify-center gap-2 border-t border-neutral-200/50 pt-8" role="navigation" aria-label="Pagination Navigation">
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
+            aria-label="Go to previous page"
             className="rounded-lg border border-neutral-200 bg-white px-3.5 py-1.5 text-xs font-semibold text-neutral-700 shadow-sm transition-all hover:bg-neutral-50 disabled:opacity-50 disabled:hover:bg-white disabled:pointer-events-none cursor-pointer"
           >
             ← Previous
@@ -314,6 +322,8 @@ export default function CategoryBlogSection({
               <button
                 key={pageNum}
                 onClick={() => handlePageChange(pageNum)}
+                aria-label={`Go to page ${pageNum}`}
+                aria-current={currentPage === pageNum ? "page" : undefined}
                 className={`flex h-8 w-8 items-center justify-center rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                   currentPage === pageNum
                     ? "bg-neutral-900 text-white shadow-sm"
@@ -328,6 +338,7 @@ export default function CategoryBlogSection({
           <button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
+            aria-label="Go to next page"
             className="rounded-lg border border-neutral-200 bg-white px-3.5 py-1.5 text-xs font-semibold text-neutral-700 shadow-sm transition-all hover:bg-neutral-50 disabled:opacity-50 disabled:hover:bg-white disabled:pointer-events-none cursor-pointer"
           >
             Next →

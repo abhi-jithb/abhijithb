@@ -75,6 +75,7 @@ export default function ShareButtons({ postTitle, postSlug }: ShareButtonsProps)
           rel="noopener noreferrer"
           className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 bg-white text-emerald-600 shadow-sm transition-all hover:bg-neutral-50 hover:border-emerald-300 active:scale-95"
           title="Share on WhatsApp"
+          aria-label="Share on WhatsApp"
         >
           <FaWhatsapp size={15} />
         </a>
@@ -86,6 +87,7 @@ export default function ShareButtons({ postTitle, postSlug }: ShareButtonsProps)
           rel="noopener noreferrer"
           className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 bg-white text-black shadow-sm transition-all hover:bg-neutral-50 hover:border-neutral-400 active:scale-95"
           title="Share on X"
+          aria-label="Share on X"
         >
           <FaXTwitter size={14} />
         </a>
@@ -97,6 +99,7 @@ export default function ShareButtons({ postTitle, postSlug }: ShareButtonsProps)
           rel="noopener noreferrer"
           className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 bg-white text-blue-700 shadow-sm transition-all hover:bg-neutral-50 hover:border-blue-300 active:scale-95"
           title="Share on LinkedIn"
+          aria-label="Share on LinkedIn"
         >
           <FaLinkedinIn size={14} />
         </a>
@@ -108,6 +111,7 @@ export default function ShareButtons({ postTitle, postSlug }: ShareButtonsProps)
           rel="noopener noreferrer"
           className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 bg-white text-sky-500 shadow-sm transition-all hover:bg-neutral-50 hover:border-sky-300 active:scale-95"
           title="Share on Telegram"
+          aria-label="Share on Telegram"
         >
           <FaTelegramPlane size={15} className="mr-0.5" />
         </a>
@@ -119,6 +123,7 @@ export default function ShareButtons({ postTitle, postSlug }: ShareButtonsProps)
           rel="noopener noreferrer"
           className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 bg-white text-blue-800 shadow-sm transition-all hover:bg-neutral-50 hover:border-blue-500 active:scale-95"
           title="Share on Facebook"
+          aria-label="Share on Facebook"
         >
           <FaFacebookF size={13} />
         </a>
@@ -128,6 +133,7 @@ export default function ShareButtons({ postTitle, postSlug }: ShareButtonsProps)
           onClick={handleInstagramShare}
           className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 bg-white text-pink-600 shadow-sm transition-all hover:bg-neutral-50 hover:border-pink-300 active:scale-95 cursor-pointer"
           title="Share on Instagram"
+          aria-label="Share on Instagram"
         >
           <FaInstagram size={15} />
         </button>
@@ -137,6 +143,7 @@ export default function ShareButtons({ postTitle, postSlug }: ShareButtonsProps)
           href={`mailto:?subject=${encodedTitle}&body=Check%20out%20this%20article:%20${encodedUrl}`}
           className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 bg-white text-neutral-600 shadow-sm transition-all hover:bg-neutral-50 hover:border-neutral-400 active:scale-95"
           title="Share via Email"
+          aria-label="Share via Email"
         >
           <FaEnvelope size={14} />
         </a>

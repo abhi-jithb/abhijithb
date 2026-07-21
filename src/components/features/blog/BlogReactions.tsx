@@ -122,6 +122,8 @@ export default function BlogReactions({ postSlug }: BlogReactionsProps) {
               key={r.type}
               onClick={() => handleReact(r.type)}
               disabled={loading}
+              aria-label={`React with ${r.label}. Current count is ${r.count}`}
+              aria-pressed={isSelected}
               className={`group flex items-center gap-2 rounded-full border px-4 py-2 text-sm transition-all duration-300 cursor-pointer ${
                 isSelected
                   ? "bg-neutral-900 border-neutral-900 text-white scale-105 shadow-md"
