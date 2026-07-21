@@ -11,9 +11,11 @@ summary: This essay explores a less visible kind of human struggle -> not
   unanswered questions about identity, purpose, and direction. It reflects on
   losing the drive that once defined life and learning to keep moving even when
   clarity never comes.
-category: Reflection
+category: Self
 tags:
-  - general
+  - existential-crisis
+  - reflection
+  - personal-growth
 coverImage: /assets/images/blog/1000033127.jpg
 draft: false
 featured: true

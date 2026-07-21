@@ -2,8 +2,12 @@
 title: "How to Start Contributing to Open Source (When You Feel Lost)"
 date: "2026-01-19"
 summary: "A beginner-friendly path into open source through small projects and collaboration."
-category: "Open Source"
-tags: ["git", "github", "open-source", "mentorship"]
+category: Tech
+tags:
+  - git
+  - github
+  - open-source
+  - mentorship
 coverImage: "/assets/images/blog/open-source.webp"
 draft: false
 featured: false

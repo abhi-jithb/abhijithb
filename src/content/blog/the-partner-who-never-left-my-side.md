@@ -10,9 +10,11 @@ date: 2026-07-10
 summary: A personal reflection on the emotional highs and lows of starting a new
   job, and the surprising companion that made every difficult day a little
   easier.
-category: General
+category: Self
 tags:
-  - general
+  - reflection
+  - personal
+  - chai
 coverImage: /assets/images/blog/1000031527.jpg
 coverImageAlt: My partner and I after another day of surviving work together. ❤️☕
 draft: false

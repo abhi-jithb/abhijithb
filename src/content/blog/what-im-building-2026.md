@@ -2,8 +2,12 @@
 title: "What I am Building, Learning, and Contributing to This Year"
 date: "2026-01-18"
 summary: "A yearly direction note covering open source, projects, hackathons, and community growth."
-category: "Reflection"
-tags: ["reflection", "learning", "goals", "community"]
+category: Self
+tags:
+  - reflection
+  - learning
+  - goals
+  - community
 coverImage: "/assets/images/blog/reflection.webp"
 draft: false
 featured: false

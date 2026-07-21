@@ -5,9 +5,10 @@ seoDescription: This is a story of a simple human being who spreads joy in the w
 author: Abhijith B
 date: 2026-06-29
 summary: This is a story of a simple human being who spreads joy in the workspace
-category: General
+category: People
 tags:
-  - general
+  - people
+  - coworker
 coverImage: /assets/images/blog/1000020652.jpg
 draft: false
 featured: false

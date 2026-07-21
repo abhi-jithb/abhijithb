@@ -8,9 +8,11 @@ date: 2026-07-04
 summary: An introspective story about one-sided love, the beauty of caring from
   afar, and the memories that quietly stay with us long after people leave our
   lives.
-category: Reflection
+category: Philosophy
 tags:
   - love
+  - philosophy
+  - reflection
 coverImage: /assets/images/blog/chatgpt-image-jul-4-2026-11_34_02-pm.png
 draft: false
 featured: false

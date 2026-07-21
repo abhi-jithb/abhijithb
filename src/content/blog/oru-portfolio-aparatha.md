@@ -9,9 +9,11 @@ author: Abhijith B
 date: 2026-06-29
 summary: How curiosity, countless bugs, late-night debugging sessions, and
   continuous learning turned one website into a journey.
-category: Reflection
+category: Projects
 tags:
-  - Portfolio
+  - portfolio
+  - learning
+  - nextjs
 draft: false
 featured: true
 ---

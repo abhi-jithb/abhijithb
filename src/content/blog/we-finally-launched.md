@@ -2,8 +2,12 @@
 title: "We Finally Launched. Not Perfectly. But Honestly."
 date: "2026-01-20"
 summary: "A practical story about shipping early, facing rejection, and getting the first client."
-category: "Startup"
-tags: ["startup", "launch", "entrepreneurship", "learning"]
+category: Projects
+tags:
+  - startup
+  - launch
+  - entrepreneurship
+  - learning
 coverImage: "/assets/images/blog/launch.webp"
 draft: false
 featured: true
