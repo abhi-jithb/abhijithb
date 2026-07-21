@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
+import { getBlogPosts } from "@/lib/blog";
 
 const baseUrl = "https://abhijithb.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
+  const staticRoutes = [
     "",
     "/about",
     "/projects",
@@ -16,12 +17,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/profile/certifications",
     "/profile/experience",
     "/profile/education",
-  ];
-
-  return routes.map((route) => ({
+  ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: route === "" ? 1 : 0.7,
+    changeFrequency: "weekly" as const,
+    priority: route === "" ? 1.0 : 0.7,
   }));
+
+  // Add dynamic category pages
+  const categories = ["self", "people", "tech", "projects", "philosophy", "books"];
+  const categoryRoutes = categories.map((category) => ({
+    url: `${baseUrl}/blog/category/${category}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+
+  // Add dynamic blog posts
+  const posts = getBlogPosts();
+  const blogRoutes = posts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...categoryRoutes, ...blogRoutes];
 }
