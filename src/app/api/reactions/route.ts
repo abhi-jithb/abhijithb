@@ -101,6 +101,7 @@ export async function POST(req: NextRequest) {
     if (!validTypes.includes(type)) {
       return NextResponse.json({ error: "Invalid reaction type." }, { status: 400 });
     }
+    const typeCast = type as keyof ReactionCounts;
 
     const data = loadData();
     const userHash = getUserHash(req, slug);
@@ -113,9 +114,9 @@ export async function POST(req: NextRequest) {
     const currentCounts = data.reactions[slug];
     const previousReaction = data.userVotes[userHash] || null;
 
-    if (previousReaction === type) {
+    if (previousReaction === typeCast) {
       // 1. User clicked the same emoji again -> Undo reaction
-      currentCounts[type] = Math.max(0, currentCounts[type] - 1);
+      currentCounts[typeCast] = Math.max(0, currentCounts[typeCast] - 1);
       delete data.userVotes[userHash];
     } else {
       // 2. User reacts for the first time OR changes reaction
@@ -126,11 +127,10 @@ export async function POST(req: NextRequest) {
       }
       
       // Increment new reaction type
-      const newType = type as keyof ReactionCounts;
-      currentCounts[newType] = (currentCounts[newType] || 0) + 1;
+      currentCounts[typeCast] = (currentCounts[typeCast] || 0) + 1;
       
       // Save new vote
-      data.userVotes[userHash] = type;
+      data.userVotes[userHash] = typeCast;
     }
 
     saveData(data);

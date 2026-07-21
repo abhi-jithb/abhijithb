@@ -55,7 +55,7 @@ export function getBlogPosts(includeDrafts = false): BlogPost[] {
       const slug = fileName.replace(/\.md$/, "");
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf8");
-      
+
       const { data, content } = matter(fileContents);
       const readingTime = calculateReadingTime(content);
 
@@ -91,10 +91,10 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
     if (!fs.existsSync(fullPath)) {
       return null;
     }
-    
+
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
-    
+
     const readingTime = calculateReadingTime(content);
     // Parse markdown to html using marked
     const htmlContent = await marked.parse(content);
