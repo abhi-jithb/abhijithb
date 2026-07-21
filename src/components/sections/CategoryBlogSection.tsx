@@ -198,7 +198,9 @@ export default function CategoryBlogSection({
             })}
           </div>
         )}
-      </d      {/* Blog Cards Grid */}
+      </div>
+
+      {/* Blog Cards Grid */}
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {paginatedPosts.map((blog) => (
           <article
